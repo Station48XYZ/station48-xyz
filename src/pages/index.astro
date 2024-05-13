@@ -44,7 +44,7 @@ import { Image } from 'astro:assets';
 
 		<Card title="Minecraft Server: play.station48.xyz" >
 
-			<Image src="http://status.mclive.eu/Station48/play.station48.xyz/25565/banner.png" alt="play.station48.xyz server status" inferSize/>
+			<img src="https://api.mcstatus.io/v2/widget/java/play.station48.xyz" alt="play.station48.xyz server status" />
 
 		</Card>
 
@@ -77,6 +77,10 @@ import { Image } from 'astro:assets';
 		color: white;
 		font-size: 20px;
 		line-height: 1.6;
+	}
+	img {
+		width: 100%;
+	
 	}
 	.astro-a {
 		position: absolute;
