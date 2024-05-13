@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import LinkCard from '../components/LinkCard.astro';
 import Card from '../components/Card.astro';
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="Station48">
@@ -43,7 +44,7 @@ import Card from '../components/Card.astro';
 
 		<Card title="Minecraft Server: play.station48.xyz" >
 
-			<img src="http://status.mclive.eu/Station48/play.station48.xyz/25565/banner.png" alt="play.station48.xyz server status" />
+			<Image src="http://status.mclive.eu/Station48/play.station48.xyz/25565/banner.png" alt="play.station48.xyz server status" inferSize/>
 
 		</Card>
 
