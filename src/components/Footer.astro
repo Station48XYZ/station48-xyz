@@ -1,0 +1,24 @@
+---
+import { getServerIcon, getServerMOTD } from "astro-mcserverstatus:components/api";
+import { Image } from "astro:assets";
+const logo = await getServerIcon();
+const motd = await getServerMOTD();
+---
+
+<footer
+  class="flex flex-col sm:flex-row items-center justify-between py-4 px-6 h-block-5 sm:h-block-4 md:h-block-3 bg-block-bedrock bg-light-level-4"
+>
+  <header class="flex flex-col gap-3 w-full sm:w-[60%] my-auto">
+    <Image src={logo} alt="" class="h-full max-w-[30ch] m-[-14px]" inferSize/>
+    <pre set:html={motd} />
+  </header>
+  <nav
+    class="flex sm:flex-col items-center sm:items-end justify-center gap-2 sm:gap-1 text-link"
+  >
+    <a href="https://github.com/TheOtterlord/ctn" class="link"
+      >Download our Modpack</a
+    >
+    <a href="https://astro.build" class="link">Website Built with Astro</a>
+    <a href="https://chat.astrolicious.dev" class="link">Our "astrolicious" Discord</a>
+  </nav>
+</footer>

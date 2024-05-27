@@ -1,0 +1,13 @@
+name = "Create The Network"
+author = "Otterlord"
+version = "0.1.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "21dc6715a8e19b7003601dacef926e05f68128fdd703eb19fa0b18b2bebee520"
+
+[versions]
+minecraft = "1.20.1"
+neoforge = "47.1.99"

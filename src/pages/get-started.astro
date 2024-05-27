@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/AstroCraft.astro";
+
+---
+<Layout>
+	<div class="flex flex-col items-center justify-center gap-20 py-16 h-full">
+	  <div class="flex items-center justify-center">
+		<div class="flex flex-col items-center justify-center text-center gap-4">
+		  <p class="max-w-[60ch] text-xl">
+			Below are the links to download a pre-bundled Modpack zip file for <span class="text-minecraft-gold">TheOtterlord</span>'s <span class="text-minecraft-red">Create the Network</span> Modpack that is in use on the <span class="text-minecraft-aqua">Station48</span> Minecraft Server.
+          </p>
+		  <p class="max-w-[60ch] text-xl">Automatic Updating</p>
+		  <ul class="flex items-center gap-4">
+			<li><a href="/downloads/ctn-prismlauncher.zip" class="minecraft-button p-4 text-xl">Prism Launcher</a></li>
+		  </ul>
+		  <p class="max-w-[60ch] text-xl">Manual Updating</p>
+		  <ul class="flex items-center gap-4">
+			<li><a href="/downloads/ctn-0.1.0-prismlauncher.zip" class="minecraft-button p-4 text-xl"><span class="text-minecraft-blue">CTN</span><span class="text-minecraft-red"> v0.1.0</span> Prism Launcher</a></li>
+			<li><a href="/downloads/ctn-0.1.0-modrinthlauncher.mrpack" class="minecraft-button p-4 text-xl"><span class="text-minecraft-blue">CTN</span><span class="text-minecraft-red"> v0.1.0</span> Modrinth Launcher</a></li>
+			<li><a href="/downloads/ctn-0.1.0-curselauncher.zip" class="minecraft-button p-4 text-xl"><span class="text-minecraft-blue">CTN</span><span class="text-minecraft-red"> v0.1.0</span> CurseForge Launcher</a></li>
+		  </ul>
+
+		  <p class="max-w-[60ch] text-xl">
+			Our Modpack is built using Packwiz and is hosted Here and on Github. You can find the repository <a href="https://github.com/TheOtterlord/ctn/">here</a>! If you would like to install the Modpack yourself, you can do so by doing the following: 
+		  </p>
+
+		</div>
+	  </div>
+
+	  <ol class="text-xl">
+		<li>Download the <a href="https://github.com/packwiz/packwiz-installer-bootstrap/releases">Packwiz-installer-bootstrap.jar</a></li>
+		<li>Create a new Minecraft Instance on your launcher configured with <span class="text-minecraft-gold">NeoForge v47.1.99</span> and <span class="text-minecraft-gold">Minecraft v1.20.1</span></li>
+		<li>Now you have two options:
+			<ul>
+				<li>Manual Update Method:
+					<ol>
+						<li>Move the <span class="text-text-accent">packwiz installer</span> into its own folder</li>
+						<li>Run the installer with the command <code class="text-sm text-minecraft-aqua">java -jar packwiz-installer-bootstrap.jar https://station48.xyz/client/pack.toml</code></li>
+						<li>Follow the installer's instructions, it will create <span class="text-minecraft-green">various required folders and files</span>.</li>
+						<li>Copy the <span class="text-minecraft-red">outputed files and folders</span> into your Minecraft instance <span class="text-sm text-wool-gray-light">(normally a .minecraft or minecraft folder inside your launcher's instance folder)</span></li>
+						<li>Launch the game and Join the server: <span class="text-minecraft-gold">play.station48.xyz</span></li>
+					</ol>
+				</li>
+				<li>Automatic Update Method: (same method used to create the Auto Updating Prism Launcher pack)
+					<ol>
+						<li>Create a new Prism instance, with <span class="text-minecraft-gold">NeoForge v47.1.99</span> and <span class="text-minecraft-gold">Minecraft v1.20.1</span></li>
+						<li>Download the <a href="https://github.com/packwiz/packwiz-installer-bootstrap/releases">Packwiz-installer-bootstrap.jar</a> and move it into your Prism instance's <span class="text-minecraft-green">.minecraft or minecraft</span> folder <span class="text-sm text-wool-gray-light"> <br /> Note: This file is sometimes hidden, meaning you have to open your file browsers settings and enable "show hidden files"</span></li>
+						<li>On the Prism launcher, Go to <span class="text-minecraft-aqua">Edit Instance</span> -> <span class="text-minecraft-aqua">Settings</span> -> <span class="text-minecraft-aqua"> Custom commands</span> and paste the following command into the pre-launch command field:
+							<ul>
+								<li><code class="text-sm text-minecraft-aqua">"$INST_JAVA" -jar packwiz-installer-bootstrap.jar http://station48.xyz/client/pack.toml</code></li>
+							</ul>
+						</li>
+						<li>Launch the game and Join the server: <span class="text-minecraft-gold">play.station48.xyz</span></li>
+					</ol>
+				</li>
+			</ul>
+		</li>
+	  </ol>
+
+	  <div class="flex items-center justify-center">
+		<div class="flex flex-col items-center justify-center text-center gap-4">
+			<p class="max-w-[60ch] text-xl">
+			  Please note that the Modpack is still in development and is subject to change. If you have any issues or suggestions, please feel free to reach out to <span class="text-minecraft-gold">TheOtterlord</span> or <span class="text-minecraft-gold">Adam Matthiesen</span> on <a href="https://chat.astrolicious.dev">Discord</a>.
+			</p>
+		</div>
+	  </div>
+
+	</div>
+	
+</Layout>
