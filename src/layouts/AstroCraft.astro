@@ -24,7 +24,12 @@ const favicon = await getServerIcon();
     <title>Station 48 | A Minecraft Server for Developers and Friends!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="A Minecraft Server for Developers and Friends!" />
-    <link rel="icon" href={favicon} />
+    <meta property="og:title" content="Station 48" />
+    <meta property="og:description" content="A Minecraft Server for Developers and Friends!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://station48.net" />
+    <meta property="og:image" content="https://station48.net/station48-og.png" />
+    <link rel="icon" href={favicon} /> 
   </head>
   <body class="dark flex flex-col min-h-screen p-0 m-0 bg-block-stone bg-light-level-4 scrollbar font-minecraft">
     {navbar && <Navbar />}
