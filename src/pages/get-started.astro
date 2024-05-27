@@ -37,14 +37,14 @@ import Layout from "../layouts/AstroCraft.astro";
 						<li>Move the <span class="text-text-accent">packwiz installer</span> into its own folder</li>
 						<li>Run the installer with the command <code class="text-sm text-minecraft-aqua">java -jar packwiz-installer-bootstrap.jar https://station48.xyz/client/pack.toml</code></li>
 						<li>Follow the installer's instructions, it will create <span class="text-minecraft-green">various required folders and files</span>.</li>
-						<li>Copy the <span class="text-minecraft-red">outputed files and folders</span> into your Minecraft instance <span class="text-sm text-wool-gray-light">(normally a .minecraft or minecraft folder inside your launcher's instance folder)</span></li>
+						<li>Copy the <span class="text-minecraft-red">outputed files and folders</span> into your Minecraft instance <span class="text-sm text-text">(normally a .minecraft or minecraft folder inside your launcher's instance folder)</span></li>
 						<li>Launch the game and Join the server: <span class="text-minecraft-gold">play.station48.xyz</span></li>
 					</ol>
 				</li>
-				<li>Automatic Update Method: (same method used to create the Auto Updating Prism Launcher pack)
+				<li>Automatic Update Method: <span class="text-sm text-text">(same method used to create the Auto Updating Prism Launcher pack)</span>
 					<ol>
 						<li>Create a new Prism instance, with <span class="text-minecraft-gold">NeoForge v47.1.99</span> and <span class="text-minecraft-gold">Minecraft v1.20.1</span></li>
-						<li>Download the <a href="https://github.com/packwiz/packwiz-installer-bootstrap/releases">Packwiz-installer-bootstrap.jar</a> and move it into your Prism instance's <span class="text-minecraft-green">.minecraft or minecraft</span> folder <span class="text-sm text-wool-gray-light"> <br /> Note: This file is sometimes hidden, meaning you have to open your file browsers settings and enable "show hidden files"</span></li>
+						<li>Download the <a href="https://github.com/packwiz/packwiz-installer-bootstrap/releases">Packwiz-installer-bootstrap.jar</a> and move it into your Prism instance's <span class="text-minecraft-green">.minecraft or minecraft</span> folder <span class="text-sm text-text"> <br /> Note: This file is sometimes hidden, meaning you have to open your file browsers settings and enable "show hidden files"</span></li>
 						<li>On the Prism launcher, Go to <span class="text-minecraft-aqua">Edit Instance</span> -> <span class="text-minecraft-aqua">Settings</span> -> <span class="text-minecraft-aqua"> Custom commands</span> and paste the following command into the pre-launch command field:
 							<ul>
 								<li><code class="text-sm text-minecraft-aqua">"$INST_JAVA" -jar packwiz-installer-bootstrap.jar http://station48.xyz/client/pack.toml</code></li>
