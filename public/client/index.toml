@@ -497,7 +497,7 @@ metafile = true
 
 [[files]]
 file = "mods/blur-forge.pw.toml"
-hash = "b452fc877ad16f35cf274f3945ec7eb46d645be3d76bd506858b263ce09332ce"
+hash = "6d120e37e9bce55fdd8b209265863dfcc6b64ac9cdf4e3afaa7dc9be08db2978"
 metafile = true
 
 [[files]]
@@ -602,17 +602,17 @@ metafile = true
 
 [[files]]
 file = "mods/embeddiumplus.pw.toml"
-hash = "7bdb3f32bfe31c1b88cec3c632e65049aaa7343de65f7855e142ed04d717ca2d"
+hash = "a015f77f4ebc98052fbe7320a53a337a453251b9a69f2436bb793b14a32bf4a9"
 metafile = true
 
 [[files]]
 file = "mods/entity-model-features.pw.toml"
-hash = "3f06aae28b5f66bdbef6dd34c03827f81739553caa58019acf8d033456b8d1d2"
+hash = "f591104a242bcb03c07963e21fb55a33c48df8ec9f9ef24be0420cd2687bae9a"
 metafile = true
 
 [[files]]
 file = "mods/entity-texture-features-fabric.pw.toml"
-hash = "ee43ae9c3705e7ee046ab6b3191dcaed8b0a87f89639714a403a72d071c7b501"
+hash = "1f4947639eb8e0689da6333639f7fd50967c1907e2eb33102e38bd269cbc7a74"
 metafile = true
 
 [[files]]
@@ -642,7 +642,7 @@ metafile = true
 
 [[files]]
 file = "mods/forgeshot.pw.toml"
-hash = "0440723dc68684408e0322421a8572cf68f290df0dd9cc5be33a144d55d3c40f"
+hash = "b8b520e9afbca00e7ef73bb5cf60a2901d981cfcec1a8cdfc4b34a03b4f61326"
 metafile = true
 
 [[files]]
@@ -742,7 +742,7 @@ metafile = true
 
 [[files]]
 file = "mods/server-country-flags.pw.toml"
-hash = "0fb5cb6492c8f7ae6e564386d3fa9ae124cabb99d1ecbf6d84f6bcb9f5cdbd46"
+hash = "646dafb1158086cfbb58df3b4551d8f504576e1d7a2508b5c9a94614c2942bdc"
 metafile = true
 
 [[files]]
@@ -777,7 +777,7 @@ metafile = true
 
 [[files]]
 file = "mods/wi-zoom.pw.toml"
-hash = "96f395c71e727cd170cc85473fd26500b9e6c8555fa9b86f645746860938e6b7"
+hash = "ba625f88153b60f038998bae988446b21efe59119dab92d15e3f50411792827a"
 metafile = true
 
 [[files]]

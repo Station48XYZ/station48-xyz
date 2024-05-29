@@ -1,6 +1,6 @@
 name = "Server Country Flags"
 filename = "servercountryflags-1.8.1-1.20.x-FORGE.jar"
-side = "both"
+side = "client"
 
 [download]
 hash-format = "sha1"
