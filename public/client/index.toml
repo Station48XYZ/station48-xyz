@@ -526,11 +526,6 @@ hash = "5ff68b415d1d9bed64dee45a3ea93471627694fa458e1a9e6b5edf22e40d9529"
 metafile = true
 
 [[files]]
-file = "mods/create-clockwork.pw.toml"
-hash = "9b9494ddf3d98305013d85c7081c6e172c26d75b90cc01393332db45f8423c89"
-metafile = true
-
-[[files]]
 file = "mods/create-deco.pw.toml"
 hash = "b6397a26aec2794a006ba9033f5b114c241e88bf80fe82937cb57d2b39e333d9"
 metafile = true
@@ -676,11 +671,6 @@ hash = "ad39b6fb2bc55933c421297e8ecf931d82dcb056a5513ba3f3b407fdeaef7b02"
 metafile = true
 
 [[files]]
-file = "mods/interactive.pw.toml"
-hash = "3fc2c0c66bc9eea83561f2b2bafd4b2358dfef382bff4a3cbca5f15c72ca01e7"
-metafile = true
-
-[[files]]
 file = "mods/interiors.pw.toml"
 hash = "d925d89ab420bc00b3c3c2b5db81a00b94ba309759f5c34fa308f681e5d02496"
 metafile = true
@@ -763,11 +753,6 @@ metafile = true
 [[files]]
 file = "mods/terralith.pw.toml"
 hash = "c65990083e70a721e768dc9385a6d989d2c157b2024d3a7d02bb56bf14d49a0a"
-metafile = true
-
-[[files]]
-file = "mods/valkyrien-skies.pw.toml"
-hash = "08c2f56bec64aeb43ae003370351eaae0f1474387f9663765b281a25ba2049ce"
 metafile = true
 
 [[files]]
