@@ -14,8 +14,8 @@ const serverIcon = await getServerIcon();
       class="flex flex-col md:flex-row items-center justify-end h-block-3 md:h-block-2 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
     >
       <a href="/" class="mx-auto md:ml-0">
-        <Image src={station48} alt="" class="w-block-2 inline" width={64} height={64}/>
-        <Image src={logo} alt="logo" class="w-block-8 inline" />
+        <Image src={station48} alt="" class="w-block-2 inline" width={64} height={64} loading="eager"/>
+        <Image src={logo} alt="logo" class="w-block-8 inline"  loading="eager"/>
       </a>
       <nav class="flex items-center justify-end w-full md:w-min gap-3 px-4 md:px-0 text-2xl">
         <slot />
