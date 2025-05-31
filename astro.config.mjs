@@ -6,7 +6,7 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://studio48.xyz",
+  site: "https://station48.xyz",
   output: "server",
   adapter: node({ mode: "standalone" }),
   integrations: [
