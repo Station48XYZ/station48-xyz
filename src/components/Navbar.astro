@@ -1,10 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
-import { getServerIcon } from "astro-mcserverstatus:components/api";
 import station48 from "../assets/station48.svg";
-
-const serverIcon = await getServerIcon();
+import { NAV } from "../consts";
 
 ---
 
@@ -19,14 +17,14 @@ const serverIcon = await getServerIcon();
       </a>
       <nav class="flex items-center justify-end w-full md:w-min gap-3 px-4 md:px-0 text-2xl">
         <slot />
-        <a href="/" class="minecraft-button py-2 px-3 text-lg">Home</a>
-        <a href="/get-started" class="minecraft-button py-2 px-3 text-lg">Get Started</a>
-        <a href="/" class="minecraft-button py-2 px-3 text-lg">Web Shop (Coming Soon)</a>
-        <a
-          href="https://map.station48.xyz/"
-          class="minecraft-button py-2 px-3 text-lg"
-          target="_blank">Interactive Live Map</a
-        >
+        {
+          NAV.map(({ href, text }) => (
+            <a {href}
+              class="minecraft-button py-2 px-3 text-lg"
+              target={href.startsWith("http") ? "_blank" : "_self"}
+            >{text}</a>
+          ))
+        }
       </nav>
     </div>
   </div>

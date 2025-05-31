@@ -1,4 +1,5 @@
 ---
+import { MODRINTN_PACK_URL } from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
 import { OnlinePlayerList, ServerBanner } from "astro-mcserverstatus:components/ssr";
 ---
@@ -17,7 +18,7 @@ import { OnlinePlayerList, ServerBanner } from "astro-mcserverstatus:components/
 		  </p>
 		  <ul class="flex items-center gap-4">
 			<li><a href="/get-started" class="minecraft-button p-4 text-xl">Get Started!</a></li>
-			<li><a href="https://modrinth.com/modpack/jonathans-cobblemon-pack" class="flex items-center gap-1">Check out the Modpack on Modrinth
+			<li><a href={MODRINTN_PACK_URL} class="flex items-center gap-1">Check out the Modpack on Modrinth
 			</a></li>
 		  </ul>
 		</div>

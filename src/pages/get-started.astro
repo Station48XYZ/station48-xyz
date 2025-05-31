@@ -1,4 +1,5 @@
 ---
+import { MODRINTN_PACK_URL } from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
 
 ---
@@ -17,7 +18,7 @@ import Layout from "../layouts/AstroCraft.astro";
           </p>
 		  <p class="text-xl">Launcher</p>
 		  <ul class="flex items-center gap-4">
-			<li><a href="https://modrinth.com/modpack/jonathans-cobblemon-pack" class="minecraft-button p-4 text-xl">Modrinth Launcher ⤴</a></li>
+			<li><a href={MODRINTN_PACK_URL} class="minecraft-button p-4 text-xl">Modrinth Launcher ⤴</a></li>
 		  </ul>
 		</div>
 
