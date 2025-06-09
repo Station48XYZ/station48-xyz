@@ -19,6 +19,6 @@ export const NAV = [
     },
     {
         text: 'Discord',
-        href: 'https://chat.studiocms.dev',
+        href: 'https://discord.gg/Hq5j3WhX9b',
     }
 ]
