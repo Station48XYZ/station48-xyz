@@ -10,6 +10,13 @@ export default defineConfig({
   site: "https://station48.xyz",
   output: "server",
   adapter: node({ mode: "standalone" }),
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https"
+      }
+    ]
+  },
   integrations: [
     mdx(), 
     minecraftStyles({
