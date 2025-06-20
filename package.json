@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "3.0.1",
     "@astrojs/node": "8.2.5",
+    "@astrojs/rss": "^4.0.12",
     "@matthiesenxyz/astro-mcserverstatus": "0.1.0",
     "astro": "4.9.1",
     "astrocraft": "0.0.2",

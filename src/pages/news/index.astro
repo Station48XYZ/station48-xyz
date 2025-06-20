@@ -1,6 +1,9 @@
 ---
-import { MODRINTN_PACK_URL } from "../consts";
-import Layout from "../layouts/AstroCraft.astro";
+import Layout from "../../layouts/AstroCraft.astro";
+import { getCollection } from "astro:content";
+
+// Import the blog collection from the content collections
+const news = await getCollection("news");
 ---
 
 <Layout>
@@ -9,7 +12,7 @@ import Layout from "../layouts/AstroCraft.astro";
 			<div
 				class="flex flex-col items-center justify-center text-center gap-4"
 			>
-				<p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
+				<!-- <p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
 					Below are the links to download the <br />
 
 					<span class="text-minecraft-gold">Cobblemon Expanded</span>
@@ -30,7 +33,7 @@ import Layout from "../layouts/AstroCraft.astro";
 							>Modrinth Launcher ⤴</a
 						>
 					</li>
-				</ul>
+				</ul> -->
 			</div>
 		</div>
 	</div>

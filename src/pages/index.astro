@@ -1,51 +1,89 @@
 ---
 import { MODRINTN_PACK_URL } from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
-import { OnlinePlayerList, ServerBanner } from "astro-mcserverstatus:components/ssr";
+import {
+	OnlinePlayerList,
+	ServerBanner,
+} from "astro-mcserverstatus:components/ssr";
 ---
+
 <Layout>
 	<div class="flex flex-col items-center justify-center gap-20 py-16 h-full">
-	  <div class="flex items-center justify-center">
-		<div class="flex flex-col items-center justify-center text-center gap-4">
-		  <div id="mcserverbanner" class="sm:max-w-[95vw] md:max-w-[60ch] mb-8">
-				<ServerBanner />
-		  </div>
-		  <p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
-			Welcome to <span class="text-minecraft-gold">Station48</span>, a <span class="text-minecraft-green">all Inclusive and Welcoming Community Minecraft Server</span> for <span class="text-minecraft-red">all Players</span>, Devs and non-devs alike! We are a community of developers <i class="text-minecraft-purple-light">(Mostly Astro Devs)</i>, builders, and players who love to <span class="text-minecraft-gold">relax, create, and play Minecraft together</span>.
-		  </p>
-		  <p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
-			We have a <span class="text-minecraft-gold">variety</span> of <span class="text-minecraft-aqua">Mods</span> to help make your experience <span class="text-minecraft-green">as enjoyable as possible</span>! We are <span class="text-minecraft-red">always</span> looking for new members to join our community and help us grow. <span class="text-minecraft-aqua">So come join us and start building your dream world today</span>!
-		  </p>
-		  <ul class="flex items-center gap-4">
-			<li><a href="/get-started" class="minecraft-button p-4 text-xl">Get Started!</a></li>
-			<li><a href={MODRINTN_PACK_URL} class="flex items-center gap-1">Check out the Modpack on Modrinth
-			</a></li>
-		  </ul>
+		<div class="flex items-center justify-center">
+			<div
+				class="flex flex-col items-center justify-center text-center gap-4"
+			>
+				<div
+					id="mcserverbanner"
+					class="sm:max-w-[95vw] md:max-w-[60ch] mb-8"
+				>
+					<ServerBanner />
+				</div>
+				<p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
+					Welcome to <span class="text-minecraft-gold">Station48</span
+					>, a <span class="text-minecraft-green"
+						>all Inclusive and Welcoming Community Minecraft Server</span
+					> for <span class="text-minecraft-red">all Players</span>,
+					Devs and non-devs alike! We are a community of developers <i
+						class="text-minecraft-purple-light"
+						>(Mostly Astro Devs)</i
+					>, builders, and players who love to <span
+						class="text-minecraft-gold"
+						>relax, create, and play Minecraft together</span
+					>.
+				</p>
+				<p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
+					We have a <span class="text-minecraft-gold">variety</span> of
+					<span class="text-minecraft-aqua">Mods</span> to help make your
+					experience <span class="text-minecraft-green"
+						>as enjoyable as possible</span
+					>! We are <span class="text-minecraft-red">always</span> looking
+					for new members to join our community and help us grow. <span
+						class="text-minecraft-aqua"
+						>So come join us and start building your dream world
+						today</span
+					>!
+				</p>
+				<ul class="flex items-center gap-4">
+					<li>
+						<a
+							href="/get-started"
+							class="minecraft-button p-4 text-xl">Get Started!</a
+						>
+					</li>
+					<li>
+						<a
+							href={MODRINTN_PACK_URL}
+							class="flex items-center gap-1"
+							>Check out the Modpack on Modrinth
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-	  </div>
 
-	  <div id="mcplayerlist" class="sm:max-w-[95vw] md:max-w-[60ch] text-xl flex flex-col items-center justify-center text-center">
-		<div>Wonder who is online? <br /> Just check Here!</div>
-		<OnlinePlayerList />
-	  </div>
+		<div
+			id="mcplayerlist"
+			class="sm:max-w-[95vw] md:max-w-[60ch] text-xl flex flex-col items-center justify-center text-center"
+		>
+			<div>Wonder who is online? <br /> Just check Here!</div>
+			<OnlinePlayerList />
+		</div>
 	</div>
-	
 </Layout>
 
 <style>
-
-@media screen and (min-width: 1430px) {
-	#mcplayerlist  {
-		position: absolute;
-		top: 10rem;
-		left: 2rem;
+	@media screen and (min-width: 1430px) {
+		#mcplayerlist {
+			position: absolute;
+			top: 10rem;
+			left: 2rem;
+		}
 	}
-}
 
-@media screen and (max-width: 620px) {
-	#mcserverbanner {
-		scale: 0.8;
+	@media screen and (max-width: 620px) {
+		#mcserverbanner {
+			scale: 0.8;
+		}
 	}
-}
-
 </style>
