@@ -1,9 +1,13 @@
 ---
 import Layout from "../../layouts/AstroCraftBlog.astro";
 import { getCollection } from "astro:content";
+import { filterDrafts } from "../../lib/filters";
 
 // Import the blog collection from the content collections
 const news = await getCollection("news");
+
+// Filter out drafts if necessary (optional, depending on your needs)
+const filteredNews = filterDrafts(news);
 ---
 
 <Layout
@@ -12,9 +16,17 @@ const news = await getCollection("news");
 >
 	<h1 class="text-4xl font-bold mb-8">News</h1>
 
+	{
+		filteredNews.length === 0 && (
+			<p class="text-minecraft-red text-xl">
+				No news posts available at the moment.
+			</p>
+		)
+	}
+
 	<div class="grid-layout">
 		{
-			news.map((post) => (
+			filteredNews.map((post) => (
 				<a
 					href={`/news/${post.slug}`}
 					class="flex flex-col items-center hover:underline bg-block-planks_oak bg-light-level-8 rounded-lg shadow-md"
