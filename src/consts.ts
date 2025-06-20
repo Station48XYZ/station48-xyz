@@ -10,6 +10,10 @@ export const NAV = [
         href: '/get-started',
     },
     {
+        text: 'News',
+        href: '/news',
+    },
+    {
         text: 'Web Shop',
         href: 'https://station48-cobblemon.tebex.io/',
     },

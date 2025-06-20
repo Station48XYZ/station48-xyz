@@ -3,29 +3,55 @@ import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import station48 from "../assets/station48.svg";
 import { NAV } from "../consts";
-
 ---
 
 <header class="bg-block-dirt decoration-[.25em]">
   <div class="bg-block-grass_side bg-block-grass_block_side bg-repeat-x">
     <div
-      class="flex flex-col md:flex-row items-center justify-end h-block-3 md:h-block-2 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
+      class="flex flex-col md:flex-row items-center justify-end h-block-5 lg:h-block-3 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
     >
       <a href="/" class="mx-auto md:ml-0">
-        <Image src={station48} alt="" class="w-block-2 inline" width={64} height={64} loading="eager"/>
-        <Image src={logo} alt="logo" class="w-block-8 inline"  loading="eager"/>
+        <Image
+          src={station48}
+          alt=""
+          class="w-block-2 inline"
+          width={64}
+          height={64}
+          loading="eager"
+        />
+        <Image
+          src={logo}
+          alt="logo"
+          class="w-block-8 inline"
+          loading="eager"
+          width={1024}
+          height={282}
+        />
       </a>
-      <nav class="flex items-center justify-end w-full md:w-min gap-3 px-4 md:px-0 text-2xl">
+      <nav
+        id="navbar"
+        class="flex items-center justify-end w-full md:w-min gap-3 px-4 md:px-0 text-2xl"
+      >
         <slot />
         {
           NAV.map(({ href, text }) => (
-            <a {href}
+            <a
+              {href}
               class="minecraft-button py-2 px-3 text-lg"
               target={href.startsWith("http") ? "_blank" : "_self"}
-            >{text}</a>
+            >
+              {text}
+            </a>
           ))
         }
       </nav>
     </div>
   </div>
+
+  <style>
+    #navbar {
+      flex-wrap: wrap;
+      width: 35rem;
+    }
+  </style>
 </header>

@@ -1,40 +1,51 @@
 ---
-import Layout from "../../layouts/AstroCraft.astro";
+import Layout from "../../layouts/AstroCraftBlog.astro";
 import { getCollection } from "astro:content";
 
 // Import the blog collection from the content collections
 const news = await getCollection("news");
 ---
 
-<Layout>
-	<div class="flex flex-col items-center justify-center gap-20 py-16 h-full">
-		<div class="flex items-center justify-center">
-			<div
-				class="flex flex-col items-center justify-center text-center gap-4"
-			>
-				<!-- <p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
-					Below are the links to download the <br />
+<Layout
+	subtitle="News"
+	description="Latest updates and news from the Station48 Minecraft server"
+>
+	<h1 class="text-4xl font-bold mb-8">News</h1>
 
-					<span class="text-minecraft-gold">Cobblemon Expanded</span>
-					<span class="text-minecraft-red">(by Jonathan)</span>
-					<span class="text-minecraft-green">v1.1.7</span> Modpack <br
-					/>
+	<div class="grid-layout">
+		{
+			news.map((post) => (
+				<a
+					href={`/news/${post.slug}`}
+					class="flex flex-col items-center hover:underline bg-block-planks_oak bg-light-level-8 rounded-lg shadow-md"
+				>
+					<div
+						class="text-minecraft-gold text-3xl flex items-center justify-center p-4"
+						id="post-title"
+					>
+						{post.data.title}
+					</div>
 
-					Used on the <span class="text-minecraft-aqua"
-						>Station48</span
-					> Minecraft Server.
-				</p>
-				<p class="text-xl">Launcher</p>
-				<ul class="flex items-center gap-4">
-					<li>
-						<a
-							href={MODRINTN_PACK_URL}
-							class="minecraft-button p-4 text-xl"
-							>Modrinth Launcher ⤴</a
-						>
-					</li>
-				</ul> -->
-			</div>
-		</div>
+					<p class="text-minecraft-aqua text-sm">
+						{new Date(post.data.date).toLocaleDateString()}
+					</p>
+				</a>
+			))
+		}
 	</div>
+
+	<style>
+		/* Grid example: responsive cards */
+		.grid-layout {
+			width: 100%;
+			max-width: 1200px;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1rem;
+		}
+
+		#post-title {
+			text-align: center;
+		}
+	</style>
 </Layout>

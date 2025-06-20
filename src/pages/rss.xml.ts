@@ -11,8 +11,6 @@ export const GET: APIRoute = async (context: APIContext) => {
         title: 'Station48 News',
         description: 'A all Inclusive and Welcoming Community Minecraft Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.',
         site: context.site,
-        // Array of `<item>`s in output xml
-        // See "Generating items" section for examples using content collections and glob imports
         items: news.map((post) => ({
             title: post.data.title,
             description: post.data.description,

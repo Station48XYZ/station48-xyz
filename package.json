@@ -15,6 +15,7 @@
     "@astrojs/node": "8.2.5",
     "@astrojs/rss": "^4.0.12",
     "@matthiesenxyz/astro-mcserverstatus": "0.1.0",
+    "@unocss/transformer-directives": "^0.60.3",
     "astro": "4.9.1",
     "astrocraft": "0.0.2",
     "sharp": "0.33.4",

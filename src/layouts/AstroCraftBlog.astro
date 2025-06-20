@@ -24,9 +24,36 @@ const { navbar = true, footer = true, subtitle, description } = Astro.props;
     class="dark flex flex-col min-h-screen p-0 m-0 bg-block-stone bg-light-level-4 scrollbar font-minecraft"
   >
     {navbar && <Navbar />}
-    <div class="grow p-4 minecraft prose mx-w-3xl mx-auto">
+    <div class="grow p-4 minecraft minecraft-prose blog">
       <slot />
     </div>
     {footer && <Footer />}
+
+    <style is:global>
+      .blog {
+        max-width: 100%;
+        min-width: 80%;
+        margin: 0 auto;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1,
+      h4 {
+        @apply: text-minecraft-gold;
+      }
+
+      h2,
+      h5 {
+        @apply: text-minecraft-green;
+      }
+
+      h3,
+      h6 {
+        @apply: text-minecraft-aqua;
+      }
+    </style>
   </body>
 </html>

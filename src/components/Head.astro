@@ -1,0 +1,29 @@
+---
+interface Props {
+    subtitle?: string;
+    description?: string;
+}
+
+const {
+    subtitle = "A Minecraft Server for Developers and Friends!",
+    description = "A Minecraft Server for Developers and Friends!",
+} = Astro.props;
+
+const currentUrl = Astro.url.origin;
+const ogImageUrl = new URL("station48-og.jpg", currentUrl);
+const faviconUrl = new URL("favicon.svg", currentUrl);
+
+const title = "Station 48";
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="theme-color" content="#ffae00" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<link rel="icon" href={faviconUrl} />
+<title>{title} | {subtitle}</title>

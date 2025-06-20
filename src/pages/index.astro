@@ -1,24 +1,33 @@
 ---
-import { MODRINTN_PACK_URL } from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
-import {
-	OnlinePlayerList,
-	ServerBanner,
-} from "astro-mcserverstatus:components/ssr";
+import { OnlinePlayerList } from "astro-mcserverstatus:components/ssr";
 ---
 
 <Layout>
-	<div class="flex flex-col items-center justify-center gap-20 py-16 h-full">
+	<div class="flex flex-col items-center justify-center gap-20 py-8 h-full">
 		<div class="flex items-center justify-center">
 			<div
 				class="flex flex-col items-center justify-center text-center gap-4"
 			>
 				<div
-					id="mcserverbanner"
-					class="sm:max-w-[95vw] md:max-w-[60ch] mb-8"
+					class="bg-block-stonebrick bg-light-level-8 rounded-lg shadow-md"
 				>
-					<ServerBanner />
+					<img
+						class="rounded-lg p-2"
+						src="http://status.mclive.eu/Station48/play.station48.xyz/25565/banner.png"
+						width="620"
+						height="76"
+					/>
 				</div>
+				<div
+					class="container bg-block-log_oak bg-light-level-8 rounded-lg shadow-md"
+				>
+					<iframe
+						class="responsive-iframe rounded-lg"
+						src="https://map.station48.xyz/#world:106:32:304:445:0:0:0:1:flat"
+					></iframe>
+				</div>
+
 				<p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
 					Welcome to <span class="text-minecraft-gold">Station48</span
 					>, a <span class="text-minecraft-green"
@@ -48,15 +57,9 @@ import {
 					<li>
 						<a
 							href="/get-started"
-							class="minecraft-button p-4 text-xl">Get Started!</a
+							class="minecraft-button p-4 text-xl"
+							>Learn how to Get Started!</a
 						>
-					</li>
-					<li>
-						<a
-							href={MODRINTN_PACK_URL}
-							class="flex items-center gap-1"
-							>Check out the Modpack on Modrinth
-						</a>
 					</li>
 				</ul>
 			</div>
@@ -64,7 +67,7 @@ import {
 
 		<div
 			id="mcplayerlist"
-			class="sm:max-w-[95vw] md:max-w-[60ch] text-xl flex flex-col items-center justify-center text-center"
+			class="sm:max-w-[95vw] md:max-w-[60ch] md:pt-12 text-xl flex flex-col items-center justify-center text-center"
 		>
 			<div>Wonder who is online? <br /> Just check Here!</div>
 			<OnlinePlayerList />
@@ -85,5 +88,25 @@ import {
 		#mcserverbanner {
 			scale: 0.8;
 		}
+	}
+
+	.container {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+	}
+
+	/* Then style the iframe to fit in the container div with full height and width */
+	.responsive-iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		padding: 0.5rem;
 	}
 </style>

@@ -20,6 +20,9 @@ importers:
       '@matthiesenxyz/astro-mcserverstatus':
         specifier: 0.1.0
         version: 0.1.0(astro@4.9.1(@types/node@20.12.12))
+      '@unocss/transformer-directives':
+        specifier: ^0.60.3
+        version: 0.60.3
       astro:
         specifier: 4.9.1
         version: 4.9.1(@types/node@20.12.12)
