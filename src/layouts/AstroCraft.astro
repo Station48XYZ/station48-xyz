@@ -1,17 +1,10 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-
-import "../styles/reset.css";
-import "../styles/minecraft.css";
 import Head from "../components/Head.astro";
+import type { LayoutProps } from "./layoutProps";
 
-type Props = {
-  navbar?: boolean;
-  footer?: boolean;
-  subtitle?: string;
-  description?: string;
-};
+interface Props extends LayoutProps {}
 
 const { navbar = true, footer = true, subtitle, description } = Astro.props;
 ---
