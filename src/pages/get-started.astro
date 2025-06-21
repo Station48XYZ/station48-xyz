@@ -8,32 +8,45 @@ import Layout from "../layouts/AstroCraft.astro";
 	description="How to get started with Station48 Minecraft Server"
 >
 	<div class="flex flex-col items-center justify-center gap-20 py-8 h-full">
-		<div class="flex items-center justify-center">
+		<div
+			class="flex flex-col items-center bg-block-planks_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-2"
+		>
+			<h1 class="text-minecraft-gold text-4xl font-bold mb-2">
+				Get Started with Station48
+			</h1>
+			<div class="text-minecraft-aqua mb-4">
+				Welcome to <span class="text-minecraft-gold">Station48</span>, a
+				community Minecraft server where you can play with friends,
+				build amazing structures, and explore a world full of adventure!
+			</div>
+		</div>
+
+		<div
+			class="minecraft mb-8 text-xl bg-block-wool_colored_gray bg-light-level-14 p-8 rounded-lg shadow-md max-w-[1200px] minecraft-prose h-full"
+		>
+			<h2 class="text-minecraft-gold text-3xl font-bold mb-4">
+				How to Join the Server
+			</h2>
+
 			<div
-				class="flex flex-col items-center justify-center text-center gap-4"
+				class="bg-block-nether_brick bg-light-level-14 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
 			>
-				<p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
-					Below are the links to download the <br />
+				<span class="text-minecraft-aqua">Use our Custom Launcher</span>
+				<a
+					href="https://github.com/Station48XYZ/Station48Launcher/releases"
+					class="minecraft-button p-4 text-xl">Download from GitHub</a
+				>
+			</div>
 
-					<span class="text-minecraft-gold">Cobblemon Expanded</span>
-					<span class="text-minecraft-red">(by Jonathan)</span>
-					<span class="text-minecraft-green">v1.1.7</span> Modpack <br
-					/>
-
-					Used on the <span class="text-minecraft-aqua"
-						>Station48</span
-					> Minecraft Server.
-				</p>
-				<p class="text-xl">Launcher</p>
-				<ul class="flex items-center gap-4">
-					<li>
-						<a
-							href={MODRINTN_PACK_URL}
-							class="minecraft-button p-4 text-xl"
-							>Modrinth Launcher ⤴</a
-						>
-					</li>
-				</ul>
+			<div
+				class="bg-block-wool_colored_green bg-light-level-14 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
+			>
+				<span class="text-minecraft-aqua"
+					>Use the Modrinth Launcher</span
+				>
+				<a href={MODRINTN_PACK_URL} class="minecraft-button p-4 text-xl"
+					>Download from Modrinth</a
+				>
 			</div>
 		</div>
 	</div>
