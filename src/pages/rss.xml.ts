@@ -14,12 +14,13 @@ export const GET: APIRoute = async (context: APIContext) => {
     return rss({
         title: 'Station48 News',
         description: 'A all Inclusive and Welcoming Community Minecraft Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.',
-        site: context.site,
+        site: context.url,
         items: filteredNews.map((post) => ({
             title: post.data.title,
             description: post.data.description,
             pubDate: post.data.date,
-            link: `/news/${post.slug}`
+            link: `/news/${post.slug}`,
+            author: 'StudioCMS'
         })),
     });
 }
