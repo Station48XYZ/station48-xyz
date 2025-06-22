@@ -25,7 +25,12 @@ const { navbar = true, footer = true, subtitle, description } = Astro.props;
       <div class="content">
         <slot />
       </div>
-      <Image src={magikarp} alt="Pokemon: Magikarp" class="poke-icon" />
+      <Image
+        src={magikarp}
+        alt="Pokemon: Magikarp"
+        class="poke-icon"
+        loading="eager"
+      />
     </div>
     {footer && <Footer />}
   </body>

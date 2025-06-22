@@ -4,6 +4,12 @@ import { Image } from "astro:assets";
 import logo from "../assets/favicon.png";
 import { DISCORD_URL, KINETIC_HOSTING_REFERRAL_URL } from "../consts";
 const motd = await getServerMOTD();
+
+interface Props {
+  eager?: boolean;
+}
+
+const { eager = false } = Astro.props;
 ---
 
 <footer
@@ -16,7 +22,7 @@ const motd = await getServerMOTD();
       src={logo}
       alt="Station48 Logo"
       class="h-full max-w-[30ch] m-[-14px]"
-      loading="eager"
+      loading={eager ? "eager" : "lazy"}
       width={64}
       height={64}
     />

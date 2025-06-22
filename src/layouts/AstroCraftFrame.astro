@@ -5,9 +5,17 @@ import Head from "../components/Head.astro";
 import type { LayoutProps } from "./layoutProps";
 import spawn from "../assets/spawn.png";
 
-interface Props extends LayoutProps {}
+interface Props extends LayoutProps {
+  eagerFooter?: boolean;
+}
 
-const { navbar = true, footer = true, subtitle, description } = Astro.props;
+const {
+  navbar = true,
+  footer = true,
+  subtitle,
+  description,
+  eagerFooter = false,
+} = Astro.props;
 ---
 
 <html>
@@ -24,6 +32,6 @@ const { navbar = true, footer = true, subtitle, description } = Astro.props;
     >
       <slot />
     </div>
-    {footer && <Footer />}
+    {footer && <Footer eager={eagerFooter} />}
   </body>
 </html>

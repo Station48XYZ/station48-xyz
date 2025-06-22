@@ -6,9 +6,19 @@ import { MAP_URL } from "../consts";
 <Layout
 	subtitle="Live Map"
 	description="Explore the Station48 Minecraft server live map"
+	eagerFooter
 >
 	<p class="placeholder text-minecraft-aqua text-xl">Loading map...</p>
-	<iframe class="h-full grow" src={MAP_URL}></iframe>
+	<iframe
+		class="h-full grow"
+		src={MAP_URL}
+		title="Station48 Live Map"
+		loading="eager"
+		allowfullscreen="true"
+		sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+		referrerpolicy="no-referrer"
+		allow="geolocation; microphone; camera; midi; encrypted-media; autoplay; clipboard-write; picture-in-picture; web-share"
+	></iframe>
 	<style>
 		iframe {
 			width: 100%;
