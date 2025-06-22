@@ -22,12 +22,22 @@ const title = "Station 48";
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <meta name="description" content={description} />
+<meta property="theme-color" content="#ffae00" />
+
+<meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="theme-color" content="#ffae00" />
-<meta property="og:type" content="website" />
 <meta property="og:url" content={currentUrl} />
 <meta property="og:image" content={ogImageUrl} />
-<link rel="icon" href={faviconUrl} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImageUrl} />
+
 <title>{title} | {subtitle}</title>
+
+<link rel="icon" href={faviconUrl} />
+<link rel="apple-touch-icon" href={faviconUrl} />
