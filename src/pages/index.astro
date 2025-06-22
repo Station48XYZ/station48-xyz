@@ -172,18 +172,21 @@ const Players = processPlayers(serverPlayers);
 					<div class="mc-player-list mt-6">
 						{Players &&
 							Players.list.map((player) => (
-								<div class="player-list-item bg-block-cobblestone_mossy bg-light-level-8">
-									<Image
-										class="player-list-item-image"
-										src={player.image}
-										alt={player.alt || "Player Icon"}
-										title={player.name || "Player Icon"}
-										height={24}
-										width={24}
-										loading={"eager"}
-									/>
-									<span class="player-list-item-name text-minecraft-yellow flex  items-center w-full grow justify-center quick-shadow">
-										{player.name}
+								<div class="player-list-item bg-block-cobblestone_mossy bg-light-level-12">
+									<div class="player-list-item-image">
+										<Image
+											src={player.image}
+											alt={player.alt || "Player Icon"}
+											title={player.name || "Player Icon"}
+											height={24}
+											width={24}
+											loading={"eager"}
+										/>
+									</div>
+									<span class="player-list-item-name flex items-center w-full grow justify-center quick-shadow">
+										<div class="nameplate">
+											{player.name}
+										</div>
 									</span>
 								</div>
 							))}
@@ -201,12 +204,31 @@ const Players = processPlayers(serverPlayers);
 </Layout>
 
 <style>
+	.nameplate {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		color: #ffff55;
+		font-size: large;
+
+		align-items: center;
+		justify-content: center;
+
+		background-color: #272822de;
+		border-radius: 0.3em;
+		border: 2px solid #4c4d46de;
+		padding: 4px 5px 6px;
+		white-space: nowrap;
+
+		text-transform: capitalize;
+	}
+
 	.mc-player-list {
 		display: flex;
 		gap: 0.5rem;
 		margin: auto;
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		gap: 1rem;
 		padding: 1rem;
 	}
@@ -215,15 +237,23 @@ const Players = processPlayers(serverPlayers);
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		gap: 1rem;
+		gap: 0.25rem;
 		padding: 0.5rem;
 		border-radius: 0.5rem;
 		font-weight: 700;
 	}
 
+	.player-list-item-image {
+		display: flex;
+		background-color: #272822de;
+		border: 2px solid #4c4d46de;
+		border-radius: 0.3em;
+		padding: 0.28rem 0.5rem 0.28rem;
+	}
+
 	.player-list-item:hover {
 		transition: ease-in-out 0.2s;
-		@apply: bg-light-level-10;
+		@apply: bg-light-level-16;
 	}
 
 	.current-players {
