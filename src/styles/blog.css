@@ -1,6 +1,7 @@
 .blog {
     max-width: 100%;
     min-width: 80%;
+    min-height: 100%;
     margin: 0 auto;
     padding: 2rem;
     display: flex;

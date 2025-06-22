@@ -21,8 +21,8 @@ const { navbar = true, footer = true, subtitle, description } = Astro.props;
     style={`background-image: url(${spawn.src});`}
   >
     {navbar && <Navbar />}
-    <div class="grow p-4 minecraft minecraft-prose blog">
-      <div class="content">
+    <div class="h-full w-full justify-center grow minecraft blog">
+      <div class="content h-full grow">
         <slot />
       </div>
       <Image

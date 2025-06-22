@@ -1,76 +1,25 @@
 ---
 import Layout from "../../layouts/AstroCraft.astro";
-import { getCollection } from "astro:content";
-import { filterDrafts } from "../../lib/filters";
-
-// Import the blog collection from the content collections
-const news = await getCollection("news");
-
-// Filter out drafts if necessary (optional, depending on your needs)
-const filteredNews = filterDrafts(news);
 ---
+
+<!-- Refresh to paginated endpoint -->
+<meta http-equiv="refresh" content="0; url=/news/1" />
 
 <Layout
 	subtitle="News"
 	description="Latest updates and news from the Station48 Minecraft server"
 >
-	<div
-		class="flex flex-col items-center bg-block-log_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-8"
-	>
-		<h1
-			class="text-minecraft-gold text-4xl font-minecraft-evenings mb-2 quick-shadow"
-		>
-			News Board
-		</h1>
-		<div class="text-minecraft-aqua mb-4 quick-shadow">
-			Keep up with the latest updates and news from the Station48
-			Cobblemon server. Here, you can find information about new features,
-			events, and other important announcements.
-		</div>
-	</div>
-
-	{
-		filteredNews.length === 0 && (
-			<p class="text-minecraft-red text-xl">
-				No news posts available at the moment.
-			</p>
-		)
-	}
-
-	<div class="grid-layout">
-		{
-			filteredNews.map((post) => (
-				<a
-					href={`/news/${post.slug}`}
-					class="flex flex-col items-center hover:underline bg-block-planks_oak bg-light-level-8 rounded-lg shadow-md"
-				>
-					<div
-						class="text-minecraft-gold text-3xl flex items-center justify-center p-4 quick-shadow"
-						id="post-title"
-					>
-						{post.data.title}
-					</div>
-
-					<p class="text-minecraft-aqua text-sm quick-shadow">
-						{new Date(post.data.date).toLocaleDateString()}
-					</p>
-				</a>
-			))
-		}
-	</div>
-
+	<p class="placeholder text-minecraft-aqua text-xl">Loading News...</p>
 	<style>
-		/* Grid example: responsive cards */
-		.grid-layout {
-			width: 100%;
-			max-width: 1200px;
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			gap: 1rem;
-		}
-
-		#post-title {
+		.placeholder {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 			text-align: center;
+			z-index: 500;
+			font-size: 1.5rem;
+			font-weight: bold;
 		}
 	</style>
 </Layout>

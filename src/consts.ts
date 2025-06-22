@@ -22,7 +22,7 @@ export const NAV = [
     },
     {
         text: 'News',
-        href: '/news',
+        href: '/news/1',
     },
     {
         text: 'Live Map',

@@ -8,7 +8,10 @@ export const GET: APIRoute = async (context: APIContext) => {
     const news = await getCollection('news');
 
     // Filter out drafts if necessary (optional, depending on your needs)
-    const filteredNews = filterDrafts(news);
+    const filteredNews = filterDrafts(news).sort(
+		({ data: { date: a } }, { data: { date: b } }) =>
+			b.getTime() - a.getTime(),
+	);
 
     // Generate the RSS feed using the imported blog collection
     return rss({
