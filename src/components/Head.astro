@@ -17,6 +17,8 @@ const currentUrl = Astro.url.origin;
 const ogImageUrl = new URL("station48-og.webp", currentUrl);
 const faviconUrl = new URL("favicon.svg", currentUrl);
 
+ogImageUrl.searchParams.set("t", new Date().getTime().toString());
+
 const title = "Station 48";
 ---
 
