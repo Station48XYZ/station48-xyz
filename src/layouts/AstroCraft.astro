@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 import type { LayoutProps } from "./layoutProps";
+import { Image } from "astro:assets";
+import magikarp from "../assets/magikarp.webp";
 
 interface Props extends LayoutProps {}
 
@@ -14,12 +16,43 @@ const { navbar = true, footer = true, subtitle, description } = Astro.props;
     <Head {subtitle} {description} />
   </head>
   <body
-    class="dark flex flex-col min-h-screen p-0 m-0 bg-block-stone bg-light-level-4 scrollbar font-minecraft"
+    class="dark flex flex-col min-h-screen p-0 m-0 bg-light-level-8 scrollbar font-minecraft"
   >
     {navbar && <Navbar />}
     <div class="grow p-4 minecraft prose mx-w-3xl mx-auto">
-      <slot />
+      <div class="content">
+        <slot />
+      </div>
+      <Image src={magikarp} alt="Magikarp" class="poke-icon" />
     </div>
     {footer && <Footer />}
+    <style>
+      body {
+        background-image: url("/img/spawn.png"); /* Replace with your image path */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .content {
+        z-index: 5;
+      }
+
+      .poke-icon {
+        position: absolute;
+        top: 25%;
+        right: 3rem;
+        width: 350px; /* Adjust the size as needed */
+        height: auto; /* Maintain aspect ratio */
+        z-index: -10;
+      }
+
+      @media screen and (max-width: 1000px) {
+        .poke-icon {
+          display: none; /* Hide the image on smaller screens */
+        }
+      }
+    </style>
   </body>
 </html>

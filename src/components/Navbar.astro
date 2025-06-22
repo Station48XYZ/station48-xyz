@@ -2,14 +2,30 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import station48 from "../assets/station48.svg";
+import pikachu from "../assets/pikachu.png";
+import gibble from "../assets/gibble.png";
+import wooper from "../assets/wooper.png";
+import butterfree from "../assets/butterfree.png";
+import mudkip from "../assets/mudkip.png";
+import starly from "../assets/starly.png";
 import { NAV } from "../consts";
 ---
 
-<header class="bg-block-dirt decoration-[.25em]">
+<header
+  class="bg-block-dirt decoration-[.25em] position-fixed top-0 left-0 right-0 z-50"
+>
   <div class="bg-block-grass_side bg-block-grass_block_side bg-repeat-x">
     <div
-      class="flex flex-row items-center justify-center align-center h-block-2 lg:h-block-3 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
+      class="flex flex-row items-center justify-center align-center h-block-3 lg:h-block-3 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
     >
+      <div class="cobbles">
+        <Image src={gibble} alt="Pokémon" height={64} width={64} />
+        <Image src={pikachu} alt="Pokémon" height={58} width={58} />
+        <Image src={wooper} alt="Pokémon" height={48} width={48} />
+        <Image src={butterfree} alt="Pokémon" height={48} width={48} />
+        <Image src={mudkip} alt="Pokémon" height={64} width={64} />
+        <Image src={starly} alt="Pokémon" height={64} width={64} />
+      </div>
       <nav class="navbar">
         <a href="/" class="nav-logo">
           <Image
@@ -23,7 +39,7 @@ import { NAV } from "../consts";
           <Image
             src={logo}
             alt="logo"
-            class="w-block-8 sm:inline mt-4"
+            class="w-block-8 sm:inline"
             loading="eager"
             width={1024}
             height={282}
@@ -44,7 +60,7 @@ import { NAV } from "../consts";
             ))
           }
         </ul>
-        <div class="hamburger minecraft-button py-4 px-4 text-lg">
+        <div class="hamburger minecraft-button py-2 px-2 text-lg">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -73,6 +89,26 @@ import { NAV } from "../consts";
   </script>
 
   <style>
+    .cobbles {
+      position: absolute;
+      top: 5.5rem;
+      left: 0;
+      width: 64px; /* Adjust the size as needed */
+      height: auto; /* Maintain aspect ratio */
+      z-index: 99;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      width: 100%;
+      animation: move 10s linear infinite;
+
+      img {
+        scale: 0.65;
+      }
+    }
+
     li {
       list-style: none;
     }
@@ -91,10 +127,12 @@ import { NAV } from "../consts";
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1.5rem;
+      z-index: 100;
     }
 
     .hamburger {
       display: none;
+      z-index: 100;
     }
 
     .bar {
@@ -109,15 +147,21 @@ import { NAV } from "../consts";
 
     .nav-menu {
       display: flex;
+      flex-direction: row;
       align-items: center;
       flex-wrap: wrap;
+      justify-content: end;
       gap: 1rem;
+      z-index: 100;
     }
 
     .nav-logo {
       font-size: 2.1rem;
       font-weight: 500;
       color: #482ff7;
+      display: flex;
+      align-items: center;
+      z-index: 100;
     }
 
     @media only screen and (max-width: 768px) {
@@ -125,7 +169,7 @@ import { NAV } from "../consts";
         @apply: bg-block-stone;
         position: fixed;
         left: -100%;
-        top: 6rem;
+        top: 9rem;
         flex-direction: column;
         width: 100%;
         min-width: 100%;
@@ -135,8 +179,9 @@ import { NAV } from "../consts";
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        z-index: 99999;
+        z-index: 100;
         border: 2px solid rgba(255, 255, 255, 0.383);
+        justify-content: start;
       }
 
       .nav-item,
@@ -185,3 +230,4 @@ import { NAV } from "../consts";
     }
   </style>
 </header>
+<div class="my-16"></div>
