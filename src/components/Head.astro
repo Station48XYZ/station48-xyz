@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-    subtitle = "A Minecraft Server for Developers and Friends!",
-    description = "Welcome to Station48, a all Inclusive and Welcoming Community Minecraft Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.",
+    subtitle = "A Cobblemon Server for Developers and Friends!",
+    description = "Welcome to Station48, a all Inclusive and Welcoming Community Cobblemon Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.",
 } = Astro.props;
 
 const currentUrl = Astro.url.origin;
@@ -19,7 +19,7 @@ const faviconUrl = new URL("favicon.svg", currentUrl);
 
 ogImageUrl.searchParams.set("t", new Date().getTime().toString());
 
-const title = "Station 48";
+const title = "Station 48 Cobblemon";
 ---
 
 <meta charset="utf-8" />
