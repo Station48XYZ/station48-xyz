@@ -7,6 +7,7 @@ import {
 	parseServerPlayers,
 } from "../lib/getServerStatus";
 import { Image } from "astro:assets";
+import KeyMods from "../components/key-mods.md";
 
 const host = "play.station48.xyz";
 
@@ -112,6 +113,10 @@ const Players = processPlayers(serverPlayers);
 					>So come join us and start building your dream world today</span
 				>!
 			</p>
+
+			<div class="prose minecraft-prose custom-prose">
+				<KeyMods />
+			</div>
 
 			<p class="flex items-center justify-center">
 				<a
@@ -219,5 +224,15 @@ const Players = processPlayers(serverPlayers);
 	.current-players-count {
 		font-size: 1.25rem;
 		display: flex;
+	}
+
+	.custom-prose {
+		b {
+			@apply: text-minecraft-purple-light;
+		}
+
+		strong {
+			@apply: text-minecraft-green;
+		}
 	}
 </style>
