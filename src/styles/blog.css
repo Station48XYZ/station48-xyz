@@ -9,17 +9,17 @@
 
     h1,
     h4 {
-        @apply: text-minecraft-gold;
+        @apply: text-minecraft-gold quick-shadow;
     }
 
     h2,
     h5 {
-        @apply: text-minecraft-green;
+        @apply: text-minecraft-green quick-shadow;
     }
 
     h3,
     h6 {
-        @apply: text-minecraft-aqua;
+        @apply: text-minecraft-aqua quick-shadow;
     }
 
     code:not(pre > code) {

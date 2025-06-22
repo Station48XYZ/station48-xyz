@@ -17,8 +17,10 @@ const filteredNews = filterDrafts(news);
 	<div
 		class="flex flex-col items-center bg-block-log_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-8"
 	>
-		<h1 class="text-minecraft-gold text-4xl font-bold mb-2">News Board</h1>
-		<div class="text-minecraft-aqua mb-4">
+		<h1 class="text-minecraft-gold text-4xl font-bold mb-2 quick-shadow">
+			News Board
+		</h1>
+		<div class="text-minecraft-aqua mb-4 quick-shadow">
 			Keep up with the latest updates and news from the Station48
 			Cobblemon server. Here, you can find information about new features,
 			events, and other important announcements.
@@ -41,13 +43,13 @@ const filteredNews = filterDrafts(news);
 					class="flex flex-col items-center hover:underline bg-block-planks_oak bg-light-level-8 rounded-lg shadow-md"
 				>
 					<div
-						class="text-minecraft-gold text-3xl flex items-center justify-center p-4"
+						class="text-minecraft-gold text-3xl flex items-center justify-center p-4 quick-shadow"
 						id="post-title"
 					>
 						{post.data.title}
 					</div>
 
-					<p class="text-minecraft-aqua text-sm">
+					<p class="text-minecraft-aqua text-sm quick-shadow">
 						{new Date(post.data.date).toLocaleDateString()}
 					</p>
 				</a>
