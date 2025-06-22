@@ -4,6 +4,7 @@ import {
 	DISCORD_URL,
 	MODRINTN_PACK_URL,
 	STATION48_LAUNCHER_DOWNLOAD_URL,
+	STATION48_SERVER_IP,
 } from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
 ---
@@ -86,7 +87,7 @@ import Layout from "../layouts/AstroCraft.astro";
 				build, and interact with other players.
 			</p>
 
-			<CopyText text="play.station48.xyz" />
+			<CopyText text={STATION48_SERVER_IP} />
 
 			<hr class="my-4 border-t-2 border-minecraft-red" />
 

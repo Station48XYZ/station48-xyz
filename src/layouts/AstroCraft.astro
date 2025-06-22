@@ -5,6 +5,7 @@ import Head from "../components/Head.astro";
 import type { LayoutProps } from "./layoutProps";
 import { Image } from "astro:assets";
 import magikarp from "../assets/magikarp.webp";
+import spawn from "../assets/spawn.png";
 
 interface Props extends LayoutProps {}
 
@@ -17,13 +18,14 @@ const { navbar = true, footer = true, subtitle, description } = Astro.props;
   </head>
   <body
     class="dark flex flex-col min-h-screen p-0 m-0 bg-light-level-8 scrollbar font-minecraft"
+    style={`background-image: url(${spawn.src});`}
   >
     {navbar && <Navbar />}
     <div class="grow p-4 minecraft minecraft-prose blog">
       <div class="content">
         <slot />
       </div>
-      <Image src={magikarp} alt="Magikarp" class="poke-icon" />
+      <Image src={magikarp} alt="Pokemon: Magikarp" class="poke-icon" />
     </div>
     {footer && <Footer />}
   </body>

@@ -13,7 +13,7 @@ export const GET: APIRoute = async (context: APIContext) => {
     // Generate the RSS feed using the imported blog collection
     return rss({
         title: 'Station48 News',
-        description: 'A all Inclusive and Welcoming Community Minecraft Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.',
+        description: 'A all Inclusive and Welcoming Community Cobblemon Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.',
         site: context.url,
         items: filteredNews.map((post) => ({
             title: post.data.title,

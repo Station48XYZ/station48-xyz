@@ -1,22 +1,19 @@
 ---
-import { getServerStatus, getJavaIcon, parseServerMOTD, parseServerPlayers } from "../lib/getServerStatus";
+import { STATION48_SERVER_IP, STATION48_SERVER_PORT } from "../consts";
+import { getServerStatus, getJavaIcon } from "../lib/getServerStatus";
 import { Image } from "astro:assets";
 
-const host = "play.station48.xyz";
+const host = STATION48_SERVER_IP;
 
 const status = await getServerStatus({
     host,
-    port: 25565,
+    port: STATION48_SERVER_PORT,
     options: {
         query: true
     }
 });
 
 const serverIcon = getJavaIcon(host);
-
-const motd = await parseServerMOTD(status);
-
-const Players = await parseServerPlayers(status);
 ---
 
 <div class="bg-block-stonebrick bg-light-level-8 rounded-lg shadow-lg">
@@ -40,13 +37,13 @@ const Players = await parseServerPlayers(status);
             </div>
 
             <div class="server-motd-message">
-                <pre id="motd" set:html={motd.html} />
+                <pre id="motd" set:html={status.motd.html} />
             </div>
 
         </div>
 
         <div class="server-motd-players">
-                {Players.online > 0 ? ( <div class="text-minecraft-green">{Players.online}</div> ) : ( <div class="text-minecraft-red">0</div> ) } <span>/</span> <div class="text-minecraft-yellow" >{Players.max}</div>
+                {status.players.online && status.players.online > 0 ? ( <div class="text-minecraft-green">{status.players.online}</div> ) : ( <div class="text-minecraft-red">0</div> ) } <span>/</span> <div class="text-minecraft-yellow" >{status.players.max || 0}</div>
         </div>
     </div>
 </div>

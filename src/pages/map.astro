@@ -1,20 +1,14 @@
 ---
 import Layout from "../layouts/AstroCraftFrame.astro";
+import { MAP_URL } from "../consts";
 ---
 
 <Layout
 	subtitle="Live Map"
 	description="Explore the Station48 Minecraft server live map"
 >
-	<div
-		class="h-full w-full flex flex-col items-center justify-center grow pt-4"
-	>
-		<p class="placeholder text-minecraft-aqua text-xl">Loading map...</p>
-		<iframe
-			class="h-full grow"
-			src="https://map.station48.xyz/#world:101:0:219:602:0:0:0:1:flat"
-		></iframe>
-	</div>
+	<p class="placeholder text-minecraft-aqua text-xl">Loading map...</p>
+	<iframe class="h-full grow" src={MAP_URL}></iframe>
 	<style>
 		iframe {
 			width: 100%;

@@ -8,12 +8,13 @@ import {
 } from "../lib/getServerStatus";
 import { Image } from "astro:assets";
 import KeyMods from "../components/key-mods.md";
+import { STATION48_SERVER_IP, STATION48_SERVER_PORT } from "../consts";
 
-const host = "play.station48.xyz";
+const host = STATION48_SERVER_IP;
 
 const status = await getServerStatus({
 	host,
-	port: 25565,
+	port: STATION48_SERVER_PORT,
 	options: {
 		query: true,
 	},
@@ -160,7 +161,7 @@ const Players = processPlayers(serverPlayers);
 			</div>
 			{
 				status.online && Players.online > 0 ? (
-					<div class="mc-player-list">
+					<div class="mc-player-list mt-6">
 						{Players &&
 							Players.list.map((player) => (
 								<div class="player-list-item bg-block-cobblestone_mossy bg-light-level-8">
@@ -180,8 +181,10 @@ const Players = processPlayers(serverPlayers);
 							))}
 					</div>
 				) : (
-					<div class="text-minecraft-red text-xl bg-block-wool_colored_white bg-light-level-10 p-4 rounded-lg shadow-md">
-						No players online
+					<div class="flex items-center justify-center font-bold mt-6">
+						<span class="text-minecraft-red text-xl bg-block-wool_colored_gray bg-light-level-16 p-4 rounded-lg shadow-md quick-shadow px-12">
+							No players currently online!
+						</span>
 					</div>
 				)
 			}

@@ -5,6 +5,7 @@ date: 2025-06-20
 ---
 
 import CopyText from '../../components/CopyText.astro';
+import { STATION48_SERVER_IP } from '../../consts';
 
 Welcome to **Station48**, an inclusive and welcoming community Minecraft server for all players—whether you're a seasoned adventurer, a creative builder, or just looking for a cozy place to unwind!
 
@@ -63,7 +64,7 @@ You can follow one of two paths to join our server:
 2. **Download the modpack** directly from our [Modrinth page](https://modrinth.com/modpack/station48/).
 
 Connect to our server:  
-<CopyText text="play.station48.xyz" />
+<CopyText text={STATION48_SERVER_IP} />
 
 Jump into the world of Station48 and experience a community where creativity, fun, and inclusion come first. Whether you're here to explore, catch, or build—this is your station.
 
