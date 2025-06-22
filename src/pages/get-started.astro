@@ -1,5 +1,10 @@
 ---
-import { MODRINTN_PACK_URL } from "../consts";
+import CopyText from "../components/CopyText.astro";
+import {
+	DISCORD_URL,
+	MODRINTN_PACK_URL,
+	STATION48_LAUNCHER_DOWNLOAD_URL,
+} from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
 ---
 
@@ -28,26 +33,99 @@ import Layout from "../layouts/AstroCraft.astro";
 				How to Join the Server
 			</h2>
 
+			<h3 class="text-minecraft-aqua">Get the Modpack or Launcher</h3>
+
 			<div
 				class="bg-block-nether_brick bg-light-level-14 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
 			>
-				<span class="text-minecraft-aqua">Use our Custom Launcher</span>
+				<span class="text-minecraft-aqua font-bold"
+					>Use our Custom Launcher</span
+				>
 				<a
-					href="https://github.com/Station48XYZ/Station48Launcher/releases"
+					href={STATION48_LAUNCHER_DOWNLOAD_URL}
 					class="minecraft-button p-4 text-xl">Download from GitHub</a
 				>
 			</div>
 
 			<div
-				class="bg-block-wool_colored_green bg-light-level-14 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
+				class="bg-block-cobblestone_mossy bg-light-level-8 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
 			>
-				<span class="text-minecraft-aqua"
+				<span class="text-minecraft-aqua font-bold"
 					>Use the Modrinth Launcher</span
 				>
 				<a href={MODRINTN_PACK_URL} class="minecraft-button p-4 text-xl"
 					>Download from Modrinth</a
 				>
 			</div>
+
+			<h3 class="text-minecraft-aqua">Connect to server</h3>
+
+			<p>
+				Start the launcher of choice and ensure you have the <strong
+					class="text-minecraft-gold">Station48</strong
+				> modpack selected. If you are using the custom launcher, it should
+				be selected by default. Then, click on the <strong
+					class="text-minecraft-gold">Play</strong
+				> button to launch the game.
+			</p>
+
+			<p>
+				Once in the game, click on <strong class="text-minecraft-green"
+					>Play Now!</strong
+				>
+				You will be taken directly into the server! From there, you can explore,
+				build, and interact with other players.
+			</p>
+
+			<CopyText text="play.station48.xyz" />
+
+			<hr class="my-4 border-t-2 border-minecraft-red" />
+
+			<h2 class="text-minecraft-purple-light text-3xl font-bold mb-4">
+				Community Rules and Guidelines
+			</h2>
+
+			<p>
+				To ensure a positive experience for everyone, please follow our
+				community rules:
+			</p>
+
+			<ol>
+				<li class="text-minecraft-aqua">
+					<strong class="text-minecraft-gold"
+						>Be kind, constructive and respectful.</strong
+					> Wholesome vibes only.
+				</li>
+				<li class="text-minecraft-aqua">
+					<strong class="text-minecraft-gold"
+						>Harassment will not be tolerated.</strong
+					> All people have a right feel safe here. We enforce our Code
+					of Conduct and repeat offenders will be banned.
+				</li>
+				<li class="text-minecraft-aqua">
+					<strong class="text-minecraft-gold"
+						>Seriously, be kind!</strong
+					> Avoid posting things (yes, even that funny meme you just found)
+					that could be read as unkind to a certain person or group. When
+					in doubt, don't post it.
+				</li>
+				<li class="text-minecraft-aqua">
+					<strong class="text-minecraft-gold"
+						>No NSFW, obscene, or offensive content.</strong
+					>
+				</li>
+			</ol>
+
+			<hr class="my-4 border-t-2 border-minecraft-red" />
+
+			<h2 class="text-minecraft-green text-3xl font-bold mb-4">
+				Need Help?
+			</h2>
+			<p>
+				If you have any questions or need assistance, feel free to reach
+				out to our community on <a href={DISCORD_URL}>Discord</a> or in-game
+				chat.
+			</p>
 		</div>
 	</div>
 </Layout>
