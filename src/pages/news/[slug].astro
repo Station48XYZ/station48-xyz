@@ -25,12 +25,12 @@ const { Content } = await post.render();
 			class="flex flex-col items-center bg-block-planks_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-2"
 		>
 			<h1
-				class="text-minecraft-gold text-4xl font-bold mb-2 quick-shadow"
+				class="text-minecraft-gold text-4xl font-minecraft-evenings mb-2 quick-shadow"
 			>
 				{post.data.title}
 			</h1>
 			<div class="text-minecraft-aqua mb-4 quick-shadow">
-				{new Date(post.data.date).toLocaleDateString()}
+				Posted – {new Date(post.data.date).toLocaleDateString()}
 			</div>
 		</div>
 
