@@ -1,113 +1,222 @@
 ---
-import { SERVER_STATUS_URL } from "../consts";
+import ServerMOTD from "../components/ServerMOTD.astro";
 import Layout from "../layouts/AstroCraft.astro";
-import { OnlinePlayerList } from "astro-mcserverstatus:components/ssr";
+import {
+	getPlayer,
+	getServerStatus,
+	parseServerPlayers,
+} from "../lib/getServerStatus";
+import { Image } from "astro:assets";
+
+const host = "play.station48.xyz";
+
+const status = await getServerStatus({
+	host,
+	port: 25565,
+	options: {
+		query: true,
+	},
+});
+
+const serverPlayers = await parseServerPlayers(status);
+
+export type ServerPlayerResponse = {
+	online: number;
+	max: number;
+	list: {
+		name: string;
+		alt: string;
+		image: string;
+	}[];
+};
+
+export type PlayerHeadType = "face" | "head";
+
+function processPlayers(players: {
+	online?: number;
+	max?: number;
+	list?: {
+		name_raw?: string;
+		name_clean?: string;
+		name_html?: string;
+		uuid?: string;
+	}[];
+}) {
+	if (!players) {
+		return { online: 0, max: 0, list: [] } as ServerPlayerResponse;
+	}
+
+	if (players.online === 0) {
+		return {
+			online: 0,
+			max: players.max,
+			list: [],
+		} as ServerPlayerResponse;
+	}
+
+	const headType = "head";
+
+	if (players.online > 0) {
+		const PlayerList = players.list.map(
+			({ uuid, name_html, name_clean }) => {
+				return {
+					name: name_html,
+					alt: name_clean,
+					image: getPlayer({ uuid: uuid, type: headType }),
+				};
+			},
+		);
+
+		return {
+			online: players.online,
+			max: players.max,
+			list: PlayerList,
+		} as ServerPlayerResponse;
+	}
+
+	return { online: 0, max: 0, list: [] } as ServerPlayerResponse;
+}
+
+const Players = processPlayers(serverPlayers);
 ---
 
 <Layout>
-	<div class="flex flex-col items-center justify-center gap-20 py-8 h-full">
-		<div class="flex items-center justify-center">
-			<div
-				class="flex flex-col items-center justify-center text-center gap-4"
-			>
-				<div
-					class="bg-block-stonebrick bg-light-level-8 rounded-lg shadow-lg"
-				>
-					<img
-						class="rounded-lg p-2"
-						src={SERVER_STATUS_URL}
-						alt="Station48 Cobblemon Minecraft server"
-						width="540"
-						height="90"
-					/>
-				</div>
-				<div
-					class="sm:max-w-[95vw] md:max-w-[60ch] text-xl bg-block-stone bg-light-level-6 p-8 rounded-lg shadow-lg"
-				>
-					<p>
-						Welcome to <span class="text-minecraft-gold"
-							>Station48</span
-						>, a <span class="text-minecraft-green"
-							>all Inclusive and Welcoming Community Minecraft
-							Server</span
-						> for <span class="text-minecraft-red">all Players</span
-						>, Devs and non-devs alike! We are a community of
-						developers <i class="text-minecraft-purple-light"
-							>(Mostly Astro Devs)</i
-						>, builders, and players who love to <span
-							class="text-minecraft-gold"
-							>relax, create, and play Minecraft together</span
-						>.
-					</p>
+	<div
+		class="flex flex-col items-center justify-center gap-8 py-8 h-full max-w-[1200px]"
+	>
+		<ServerMOTD />
+		<div
+			class="text-xl bg-block-stone bg-light-level-6 p-8 rounded-lg shadow-lg"
+		>
+			<p>
+				Welcome to <span class="text-minecraft-gold">Station48</span>, a <span
+					class="text-minecraft-green"
+					>all Inclusive and Welcoming Community Minecraft Server</span
+				> for <span class="text-minecraft-red">all Players</span>, Devs
+				and non-devs alike! We are a community of developers <i
+					class="text-minecraft-purple-light">(Mostly Astro Devs)</i
+				>, builders, and players who love to <span
+					class="text-minecraft-gold"
+					>relax, create, and play Minecraft together</span
+				>.
+			</p>
 
-					<p>
-						We have a <span class="text-minecraft-gold"
-							>variety</span
-						> of
-						<span class="text-minecraft-aqua">Mods</span> to help make
-						your experience <span class="text-minecraft-green"
-							>as enjoyable as possible</span
-						>! We are <span class="text-minecraft-red">always</span>
-						looking for new members to join our community and help us
-						grow. <span class="text-minecraft-aqua"
-							>So come join us and start building your dream world
-							today</span
-						>!
-					</p>
+			<p>
+				We have a <span class="text-minecraft-gold">variety</span> of
+				<span class="text-minecraft-aqua">Mods</span> to help make your experience
+				<span class="text-minecraft-green"
+					>as enjoyable as possible</span
+				>! We are <span class="text-minecraft-red">always</span>
+				looking for new members to join our community and help us grow. <span
+					class="text-minecraft-aqua"
+					>So come join us and start building your dream world today</span
+				>!
+			</p>
 
-					<p>
-						<a
-							href="/get-started"
-							class="minecraft-button p-4 text-xl"
-							>Learn how to Get Started!</a
-						>
-					</p>
-				</div>
-			</div>
+			<p class="flex items-center justify-center">
+				<a
+					href="/get-started"
+					class="minecraft-button p-4 text-xl font-bold"
+					>Learn how to Get Started!</a
+				>
+			</p>
 		</div>
 
 		<div
-			id="mcplayerlist"
-			class="sm:max-w-[95vw] md:max-w-[60ch] md:pt-12 text-xl flex flex-col items-center justify-center text-center"
+			class="bg-block-log_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-2 w-full"
 		>
-			<div>Wonder who is online? <br /> Just check Here!</div>
-			<OnlinePlayerList />
+			<div
+				class="bg-block-planks_oak bg-light-level-10 p-2 rounded-lg shadow-md mb-2 flex flex-col items-center"
+			>
+				<h2
+					class="text-4xl font-bold mb-2 flex items-center gap-2 current-players"
+				>
+					<span class="text-minecraft-green"
+						>Currently Playing on Station48</span
+					>
+					<span class="current-players-count"
+						>({
+							Players.online > 0 ? (
+								<div class="text-minecraft-green">
+									{Players.online}
+								</div>
+							) : (
+								<div class="text-minecraft-red">0</div>
+							)
+						}/<div class="text-minecraft-yellow">
+							{Players.max}
+						</div>)</span
+					>
+				</h2>
+				<div class="text-minecraft-aqua mb-4">
+					<p>
+						Check out the current players on the server and join in
+						on the fun!
+					</p>
+				</div>
+			</div>
+			{
+				status.online && Players.online > 0 ? (
+					<div class="mc-player-list">
+						{Players &&
+							Players.list.map((player) => (
+								<div class="player-list-item bg-block-cobblestone_mossy bg-light-level-8">
+									<Image
+										class="player-list-item-image"
+										src={player.image}
+										alt={player.alt || "Player Icon"}
+										title={player.alt || "Player Icon"}
+										height={24}
+										width={24}
+										loading={"eager"}
+									/>
+									<span class="player-list-item-name text-minecraft-yellow">
+										<Fragment set:html={player.name} />
+									</span>
+								</div>
+							))}
+					</div>
+				) : (
+					<div class="text-minecraft-red text-xl bg-block-wool_colored_white bg-light-level-10 p-4 rounded-lg shadow-md">
+						No players online
+					</div>
+				)
+			}
 		</div>
 	</div>
 </Layout>
 
 <style>
-	@media screen and (min-width: 1430px) {
-		#mcplayerlist {
-			position: absolute;
-			top: 10rem;
-			left: 2rem;
-		}
+	.mc-player-list {
+		display: flex;
+		gap: 0.5rem;
+		margin: auto;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 1rem;
+		padding: 1rem;
 	}
 
-	@media screen and (max-width: 620px) {
-		#mcserverbanner {
-			scale: 0.8;
-		}
-	}
-
-	.container {
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-		padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-	}
-
-	/* Then style the iframe to fit in the container div with full height and width */
-	.responsive-iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		border: 0;
+	.player-list-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 		padding: 0.5rem;
+		border-radius: 0.5rem;
+		font-weight: 700;
+	}
+
+	.player-list-item:hover {
+		transition: ease-in-out 0.2s;
+		@apply: bg-light-level-10;
+	}
+
+	.current-players {
+		color: white;
+	}
+
+	.current-players-count {
+		font-size: 1.25rem;
+		display: flex;
 	}
 </style>

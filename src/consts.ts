@@ -4,8 +4,6 @@ export const DISCORD_URL = 'https://discord.gg/Hq5j3WhX9b';
 
 export const STATION48_LAUNCHER_DOWNLOAD_URL = 'https://github.com/Station48XYZ/Station48Launcher/releases';
 
-export const SERVER_STATUS_URL = 'https://status.minecraftservers.org/classic/675418.png';
-
 export const NAV = [
     {
         text: 'Home',
