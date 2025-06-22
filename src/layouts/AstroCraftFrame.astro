@@ -1,0 +1,23 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import type { LayoutProps } from "./layoutProps";
+
+interface Props extends LayoutProps {}
+
+const { navbar = true, footer = true, subtitle, description } = Astro.props;
+---
+
+<html>
+  <head>
+    <Head {subtitle} {description} />
+  </head>
+  <body
+    class="dark flex flex-col min-h-screen p-0 m-0 bg-light-level-8 scrollbar font-minecraft"
+  >
+    {navbar && <Navbar />}
+    <slot />
+    {footer && <Footer />}
+  </body>
+</html>

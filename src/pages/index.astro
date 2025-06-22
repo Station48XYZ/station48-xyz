@@ -170,7 +170,7 @@ const Players = processPlayers(serverPlayers);
 										width={24}
 										loading={"eager"}
 									/>
-									<span class="player-list-item-name text-minecraft-yellow">
+									<span class="player-list-item-name text-minecraft-yellow flex  items-center w-full grow justify-center">
 										<Fragment set:html={player.name} />
 									</span>
 								</div>
@@ -200,7 +200,8 @@ const Players = processPlayers(serverPlayers);
 	.player-list-item {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		justify-content: flex-start;
+		gap: 1rem;
 		padding: 0.5rem;
 		border-radius: 0.5rem;
 		font-weight: 700;

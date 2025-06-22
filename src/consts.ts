@@ -18,15 +18,15 @@ export const NAV = [
         href: '/news',
     },
     {
-        text: 'Web Shop',
+        text: 'Live Map',
+        href: '/map'
+    },
+    {
+        text: 'Web Shop ↗',
         href: 'https://station48-cobblemon.tebex.io/',
     },
     {
-        text: 'Interactive Live Map',
-        href: 'https://map.station48.xyz'
-    },
-    {
-        text: 'Discord',
+        text: 'Discord ↗',
         href: DISCORD_URL,
     }
 ]
