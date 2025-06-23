@@ -43,7 +43,7 @@ const serverIcon = getJavaIcon(host);
         </div>
 
         <div class="server-motd-players">
-                {status.players.online && status.players.online > 0 ? ( <div class="text-minecraft-green">{status.players.online}</div> ) : ( <div class="text-minecraft-red">0</div> ) } <span>/</span> <div class="text-minecraft-yellow" >{status.players.max || 0}</div>
+                {status?.players?.online && status?.players?.online > 0 ? ( <div class="text-minecraft-green">{status.players.online}</div> ) : ( <div class="text-minecraft-red">0</div> ) } <span>/</span> <div class="text-minecraft-yellow" >{status?.players?.max || 0}</div>
         </div>
     </div>
 </div>
@@ -148,7 +148,8 @@ const serverIcon = getJavaIcon(host);
         cursor: pointer;
         border-radius: 5px;
         transition: ease-in-out 0.2s;
-        padding-top: 0.2rem
+        padding-top: 0.2rem;
+        min-width: 350px;
     }
 
     #server-address:hover {
