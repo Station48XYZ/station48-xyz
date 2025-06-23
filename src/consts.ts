@@ -1,4 +1,4 @@
-export const MODRINTN_PACK_URL = 'https://modrinth.com/modpack/jonathans-cobblemon-pack'
+export const MODRINTN_PACK_URL = 'https://modrinth.com/modpack/station48'
 
 export const DISCORD_URL = 'https://discord.gg/Hq5j3WhX9b';
 
