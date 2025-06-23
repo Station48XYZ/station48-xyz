@@ -100,7 +100,7 @@ export async function getServerStatus(opts: getJavaStatusOptions): Promise<JavaS
 
 export async function parseServerPlayers(serverStatus: JavaStatusResponse): Promise<JavaStatusResponse["players"]> {
 
-    if (serverStatus.online) {
+    if (serverStatus?.online) {
         return serverStatus.players;
     }
     return {} as JavaStatusResponse["players"];
@@ -108,7 +108,7 @@ export async function parseServerPlayers(serverStatus: JavaStatusResponse): Prom
 
 export async function parseServerMOTD(serverStatus: JavaStatusResponse): Promise<JavaStatusResponse["motd"]> {
 
-    if (serverStatus.online) {
+    if (serverStatus?.online) {
         return serverStatus.motd;
     }
     return {} as JavaStatusResponse["motd"];
