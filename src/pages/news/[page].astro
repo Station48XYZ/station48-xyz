@@ -1,0 +1,136 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/AstroCraft.astro";
+import { getCollection } from "astro:content";
+import { filterDrafts } from "../../lib/filters";
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+	// Import the blog collection from the content collections
+	const news = await getCollection("news");
+
+	// Filter out drafts if necessary (optional, depending on your needs)
+	const filteredNews = filterDrafts(news).sort(
+		({ data: { date: a } }, { data: { date: b } }) =>
+			b.getTime() - a.getTime(),
+	);
+
+	return paginate(filteredNews, { pageSize: 9 });
+}) satisfies GetStaticPaths;
+
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+
+const { currentPage, data: filteredNews, total: totalPages } = page;
+---
+
+<Layout
+	subtitle="News"
+	description="Latest updates and news from the Station48 Minecraft server"
+>
+	<div
+		class="flex flex-col items-center bg-block-log_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-8 gap-8 py-8 mt-8"
+	>
+		<h1
+			class="text-minecraft-gold text-4xl font-minecraft-evenings mt-6 mb-2 quick-shadow"
+		>
+			News Board
+		</h1>
+		<div class="text-minecraft-aqua mb-4 quick-shadow">
+			Keep up with the latest updates and news from the Station48
+			Cobblemon server. Here, you can find information about new features,
+			events, and other important announcements.
+		</div>
+	</div>
+
+	<div class="flex flex-col grow w-full h-full items-center justify-center">
+		{
+			filteredNews.length === 0 && (
+				<p class="text-minecraft-red text-xl">
+					No news posts available at the moment.
+				</p>
+			)
+		}
+
+		<div class="grid-layout">
+			{
+				filteredNews.map((post) => (
+					<a
+						href={`/news/${post.slug}`}
+						class="flex flex-col items-center hover:underline bg-block-planks_oak bg-light-level-8 rounded-lg shadow-md"
+					>
+						<div
+							class="text-minecraft-gold text-3xl flex items-center justify-center p-4 quick-shadow"
+							id="post-title"
+						>
+							{post.data.title}
+						</div>
+
+						<p class="text-minecraft-aqua text-sm quick-shadow">
+							{new Date(post.data.date).toLocaleDateString()}
+						</p>
+					</a>
+				))
+			}
+		</div>
+	</div>
+
+	{
+		totalPages > 1 && (
+			<div class="flex flex-row items-center justify-center mt-24 gap-4">
+				<button
+					id="previous-button"
+					disabled={currentPage <= 1}
+					class="minecraft-button p-2 text-lg font-bold w-32"
+					data-link_href={`/news/${currentPage - 1}`}
+					class:list={[currentPage <= 1 ? "disabled-button" : ""]}
+					onclick="window.location.assign(document.getElementById('previous-button').dataset.link_href)"
+				>
+					Previous
+				</button>
+				<span class="p-2 text-lg font-bold quick-shadow">
+					{currentPage} / {totalPages}
+				</span>
+				<button
+					id="previous-button"
+					disabled={currentPage >= totalPages}
+					class="minecraft-button p-2 text-lg font-bold w-32"
+					class:list={[
+						currentPage >= totalPages ? "disabled-button" : "",
+					]}
+					data-link_href={`/news/${currentPage + 1}`}
+					onclick="window.location.assign(document.getElementById('previous-button').dataset.link_href)"
+				>
+					Next
+				</button>
+			</div>
+		)
+	}
+
+	<style>
+		.disabled-button {
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAQCAMAAADXjyqxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAzUExURSwsLCsrKyoqKi0tLSgoKC4uLikpKTAwMC8vLycnJzExMSYmJjMzMyUlJTQ0NDIyMiQkJGrNGM0AAAAJcEhZcwAADsIAAA7CARUoSoAAAAJ3SURBVDhPtZQLetwgDIRBQpjYzab3P23/Gdj92gNUib2AXqORcNvSI8OL5IkY0aN8wrv32bGYQ3ueZH3Jbsmv9qH/8WvXwn+ykzlW1WbgICuZysuqcqq3kONrJJpzmFeLOfgjcwxeSClAkjTvpgjxgLITe4LSfuz2b/T5GE48OO+8YMUXAZGi4m4kRMAPIU8GcRclcE4mla5MUpsESZHuYKpPEZjD2hht1c1RFzwBDCpQom0maqSsrF+A2sfgV6wdvo93PnTnSNzhhO18ZnOluRJ4W5+kVitqQrQikE7iQ56pcDjQFduj3UURiwJk4XNEmOzNE9+2wnHr2hJkCC51AKeUqVLkfQjOq8ClGM9pCAye7kHZ3DQjUKO+QQatFJ3o0fXsTonWWXdf1AJPjOWNJsRk4umiN2OIO6zK1NpKOtkWmPK6M8nHBNXrdhtIoVkiSZi4M0F6STRViOlweT3vrFtHmFaws37yQ3L5sbJ7dh0eatqnG2x0DCPtXvcL9YkhAbKvFAJ0GhK0WjWoxFKG+4dGMzjbSCjOSuI1joLKv7a6pVDPVaxcIoveyMqiFePKHXjAuS8mO4F2W/6R3Kyy+FF/DQEeIUz9WcyQZ1MlsiTw030vzA0mTiaK5ZiDeRRO8PVrwL2pUakmXVx+5lHfkSNHH218M3WEhA1Kksb6rlHWr98KeK4Uc/wJp5cv0l9VahimAsYwQGBqFMS5brBP5KH9xqAPiu4wY+8B9THGeeUyK96bgqWXYu8QmO8sVVwGvi5ndMiiiQxKq4rIl4IIGZVSYnypNwzSjtzH7+EvUF1nHPxWhn3L9eXaI6ghk2538P/f+Nb+AM5ADPJPFGFSAAAAAElFTkSuQmCC");
+			border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAUCAMAAAAKqMsNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAtUExURQAAACsrKykpKSwsLC0tLS4uLi8vLyoqKiYmJiUlJSgoKDMzMycnJzExMQAAAIPez4AAAAAPdFJOU///////////////////ANTcmKEAAAAJcEhZcwAADsIAAA7CARUoSoAAAACQSURBVDhPxVRtDkMhCBOK9s193P+4Kz53AfmxJsYSYgNC2uowc0TvwIAbbijiRREdPnzqihF3DuOptOnNUCABfAq4soLNj+DVCmZVwKotsCqQU+DmRyiP8VVtoTzGURXIKcTmR8g96JsfIf7+B1lBfRNpnMtJOuj8eQohak4i3vC0GHTlLGzZi7LLYSRQQmtffaE26gudj+8AAAAASUVORK5CYII=");
+			border-image-slice: 16% 5%;
+			border-image-repeat: contain;
+			text-decoration: none;
+			color: #a8a29e;
+			cursor: not-allowed;
+		}
+
+		/* Grid example: responsive cards */
+		.grid-layout {
+			width: 100%;
+			max-width: 1200px;
+			height: 100%;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1rem;
+		}
+
+		#post-title {
+			text-align: center;
+		}
+	</style>
+</Layout>

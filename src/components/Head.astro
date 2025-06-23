@@ -1,0 +1,45 @@
+---
+import "../styles/reset.css";
+import "../styles/minecraft.css";
+import "../styles/blog.css";
+
+interface Props {
+    subtitle?: string;
+    description?: string;
+}
+
+const {
+    subtitle = "A Cobblemon Server for Developers and Friends!",
+    description = "Welcome to Station48, a all Inclusive and Welcoming Community Cobblemon Server for all Players, Devs and non-devs alike! We are a community of developers (Mostly Astro Devs), builders, and players who love to relax, create, and play Minecraft together.",
+} = Astro.props;
+
+const currentUrl = Astro.url.origin;
+const ogImageUrl = new URL("station48-og.webp", currentUrl);
+const faviconUrl = new URL("favicon.svg", currentUrl);
+
+ogImageUrl.searchParams.set("t", new Date().getTime().toString());
+
+const title = "Station 48 Cobblemon";
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content={description} />
+<meta property="theme-color" content="#ffae00" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:image" content={ogImageUrl} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImageUrl} />
+
+<title>{title} | {subtitle}</title>
+
+<link rel="icon" href={faviconUrl} />
+<link rel="apple-touch-icon" href={faviconUrl} />

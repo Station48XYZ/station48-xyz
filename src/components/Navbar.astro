@@ -2,30 +2,268 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import station48 from "../assets/station48.svg";
+import pikachu from "../assets/pikachu.png";
+import gibble from "../assets/gibble.png";
+import wooper from "../assets/wooper.png";
+import butterfree from "../assets/butterfree.png";
+import mudkip from "../assets/mudkip.png";
+import starly from "../assets/starly.png";
 import { NAV } from "../consts";
-
 ---
 
-<header class="bg-block-dirt decoration-[.25em]">
+<header
+  class="bg-block-dirt decoration-[.25em] position-fixed top-0 left-0 right-0 z-50"
+>
   <div class="bg-block-grass_side bg-block-grass_block_side bg-repeat-x">
     <div
-      class="flex flex-col md:flex-row items-center justify-end h-block-3 md:h-block-2 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
+      class="flex flex-row items-center justify-center align-center h-block-3 lg:h-block-3 w-full pb-4 md:pb-0 md:pr-4 bg-gradient-to-t from-black/75 to-black/25"
     >
-      <a href="/" class="mx-auto md:ml-0">
-        <Image src={station48} alt="" class="w-block-2 inline" width={64} height={64} loading="eager"/>
-        <Image src={logo} alt="logo" class="w-block-8 inline"  loading="eager"/>
-      </a>
-      <nav class="flex items-center justify-end w-full md:w-min gap-3 px-4 md:px-0 text-2xl">
-        <slot />
-        {
-          NAV.map(({ href, text }) => (
-            <a {href}
-              class="minecraft-button py-2 px-3 text-lg"
-              target={href.startsWith("http") ? "_blank" : "_self"}
-            >{text}</a>
-          ))
-        }
+      <div class="cobbles">
+        <Image
+          src={gibble}
+          alt="Pokémon: Gibble"
+          height={64}
+          width={64}
+          loading="eager"
+        />
+        <Image
+          src={pikachu}
+          alt="Pokémon: Pikachu"
+          height={58}
+          width={58}
+          loading="eager"
+        />
+        <Image
+          src={wooper}
+          alt="Pokémon: Wooper"
+          height={48}
+          width={48}
+          loading="eager"
+        />
+        <Image
+          src={butterfree}
+          alt="Pokémon: Butterfree"
+          height={48}
+          width={48}
+          loading="eager"
+        />
+        <Image
+          src={mudkip}
+          alt="Pokémon: Mudkip"
+          height={64}
+          width={64}
+          loading="eager"
+        />
+        <Image
+          src={starly}
+          alt="Pokémon: Starly"
+          height={64}
+          width={64}
+          loading="eager"
+        />
+      </div>
+      <nav class="navbar">
+        <a href="/" class="nav-logo">
+          <Image
+            src={station48}
+            alt="Station48 Logo - Icon"
+            class="w-block-2 inline nav-logo-icon"
+            width={64}
+            height={64}
+            loading="eager"
+          />
+          <Image
+            src={logo}
+            alt="Station48 Logo - Text"
+            class="w-block-8 sm:inline"
+            loading="eager"
+            width={1024}
+            height={282}
+          />
+        </a>
+        <ul class="nav-menu">
+          {
+            NAV.map(({ href, text }) => (
+              <li class="nav-item">
+                <a
+                  {href}
+                  class="nav-link minecraft-button py-4 px-4 text-2xl sm:text-lg font-bold"
+                  target={href.startsWith("http") ? "_blank" : "_self"}
+                >
+                  {text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="hamburger minecraft-button py-2 px-2 text-lg">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
       </nav>
     </div>
   </div>
+
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    const navLink = document.querySelectorAll(".nav-link");
+
+    hamburger.addEventListener("click", mobileMenu);
+    navLink.forEach((n) => n.addEventListener("click", closeMenu));
+
+    function mobileMenu() {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
+    }
+  </script>
+
+  <style>
+    .cobbles {
+      position: absolute;
+      top: 5.5rem;
+      left: 0;
+      width: 64px; /* Adjust the size as needed */
+      height: auto; /* Maintain aspect ratio */
+      z-index: 99;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      width: 100%;
+      animation: move 10s linear infinite;
+
+      img {
+        scale: 0.65;
+      }
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .header {
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .navbar {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      z-index: 100;
+    }
+
+    .hamburger {
+      display: none;
+      z-index: 100;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      background-color: #101010;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: end;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-size: 2.1rem;
+      font-weight: 500;
+      color: #482ff7;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .nav-menu {
+        @apply: bg-block-stone;
+        position: fixed;
+        left: -100%;
+        top: 9rem;
+        flex-direction: column;
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        padding-top: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        z-index: 100;
+        border: 2px solid rgba(255, 255, 255, 0.383);
+        justify-content: start;
+      }
+
+      .nav-item,
+      .nav-link {
+        width: 100%;
+        min-width: 100%;
+        display: block;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .nav-logo-icon {
+        display: none;
+      }
+
+      .nav-logo {
+        scale: 0.8;
+      }
+
+      .navbar {
+        flex-direction: row;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .hamburger {
+        display: block;
+        cursor: pointer;
+      }
+
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  </style>
 </header>
+<div class="my-16"></div>

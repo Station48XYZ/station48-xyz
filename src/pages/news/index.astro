@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/AstroCraft.astro";
+---
+
+<!-- Refresh to paginated endpoint -->
+<meta http-equiv="refresh" content="0; url=/news/1" />
+
+<Layout
+	subtitle="News"
+	description="Latest updates and news from the Station48 Minecraft server"
+>
+	<p class="placeholder text-minecraft-aqua text-xl">Loading News...</p>
+	<style>
+		.placeholder {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			z-index: 500;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+	</style>
+</Layout>

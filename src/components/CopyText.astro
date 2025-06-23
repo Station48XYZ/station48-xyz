@@ -1,0 +1,59 @@
+---
+interface Props {
+    text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<copy-text-button>
+    <button
+        class="minecraft-button text-lg px-2 py-1 text-minecraft-gold rounded font-minecrafter"
+    >
+        {text}
+    </button>
+</copy-text-button>
+
+<script>
+    class CopyTextButton extends HTMLElement {
+        private buttonChild: HTMLButtonElement;
+
+        constructor() {
+            super();
+            this.addEventListener("click", this.copyText);
+
+            this.buttonChild = this.querySelector("button");
+        }
+
+        copyText() {
+            const text = this.textContent.trim();
+            navigator.clipboard
+                .writeText(text)
+                .then(() => {
+                    if (this.buttonChild) {
+                        this.buttonChild.textContent = "Copied to Clipboard!";
+                        this.buttonChild.classList.add("text-minecraft-green");
+                        this.buttonChild.classList.remove(
+                            "text-minecraft-gold",
+                        );
+                        setTimeout(() => {
+                            this.buttonChild.textContent = text;
+                            this.buttonChild.classList.remove(
+                                "text-minecraft-green",
+                            );
+                            this.buttonChild.classList.add(
+                                "text-minecraft-gold",
+                            );
+                        }, 2000);
+                    }
+                })
+                .catch((err) => {
+                    console.error("Failed to copy text: ", err);
+                });
+        }
+    }
+
+    if (!customElements.get("copy-text-button")) {
+        customElements.define("copy-text-button", CopyTextButton);
+    }
+</script>

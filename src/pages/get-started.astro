@@ -1,29 +1,156 @@
 ---
-import { MODRINTN_PACK_URL } from "../consts";
+import CopyText from "../components/CopyText.astro";
+import {
+	DISCORD_URL,
+	MODRINTN_PACK_URL,
+	STATION48_LAUNCHER_DOWNLOAD_URL,
+	STATION48_SERVER_IP,
+} from "../consts";
 import Layout from "../layouts/AstroCraft.astro";
-
 ---
-<Layout>
-	<div class="flex flex-col items-center justify-center gap-20 py-16 h-full">
 
-	  <div class="flex items-center justify-center">
-
-		<div class="flex flex-col items-center justify-center text-center gap-4">
-		  <p class="sm:max-w-[95vw] md:max-w-[60ch] text-xl">
-			Below are the links to download the <br />
-			
-			<span class="text-minecraft-gold">Cobblemon Expanded</span> <span class="text-minecraft-red">(by Jonathan)</span> <span class="text-minecraft-green">v1.1.7</span> Modpack  <br />
-			
-			Used on the <span class="text-minecraft-aqua">Station48</span> Minecraft Server.
-          </p>
-		  <p class="text-xl">Launcher</p>
-		  <ul class="flex items-center gap-4">
-			<li><a href={MODRINTN_PACK_URL} class="minecraft-button p-4 text-xl">Modrinth Launcher ⤴</a></li>
-		  </ul>
+<Layout
+	subtitle="Get Started"
+	description="How to get started with Station48 Minecraft Server"
+>
+	<div
+		class="flex flex-col items-center justify-center gap-8 py-8 h-full max-w-[1200px]"
+	>
+		<div
+			class="flex flex-col items-center bg-block-stonebrick_cracked bg-light-level-8 p-6 rounded-lg shadow-md mb-2"
+		>
+			<h1
+				class="text-minecraft-gold text-4xl mb-2 quick-shadow font-minecraft-evenings"
+			>
+				Get Started with Station48
+			</h1>
+			<div class="text-minecraft-aqua mb-4 quick-shadow">
+				Welcome to <span class="text-minecraft-gold">Station48</span>, a
+				community Minecraft server where you can play with friends,
+				build amazing structures, and explore a world full of adventure!
+			</div>
 		</div>
 
-	  </div>
+		<div
+			class="minecraft mb-8 text-xl bg-block-stone bg-light-level-6 p-8 rounded-lg shadow-md minecraft-prose h-full"
+		>
+			<h2
+				class="text-minecraft-gold text-3xl font-bold mb-4 quick-shadow flex gap-2 items-center"
+			>
+				<div class="bg-item-apple"></div> How to Join the Server
+			</h2>
 
+			<h3 class="text-minecraft-aqua quick-shadow">
+				Get the Modpack or Launcher
+			</h3>
+
+			<div
+				class="bg-block-nether_brick bg-light-level-14 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
+			>
+				<span class="text-minecraft-aqua font-bold"
+					>Use our Custom Launcher</span
+				>
+				<a
+					href={STATION48_LAUNCHER_DOWNLOAD_URL}
+					class="minecraft-button p-4 text-xl"
+					target="_blank">Download from GitHub ↗</a
+				>
+			</div>
+
+			<div
+				class="bg-block-cobblestone_mossy bg-light-level-8 p-8 rounded-lg mb-4 flex justify-between items-center flex-col sm:flex-row"
+			>
+				<span class="text-minecraft-aqua font-bold"
+					>Use the Modrinth Launcher</span
+				>
+				<a
+					href={MODRINTN_PACK_URL}
+					class="minecraft-button p-4 text-xl"
+					target="_blank">Download from Modrinth ↗</a
+				>
+			</div>
+
+			<h3 class="text-minecraft-aqua quick-shadow">Connect to server</h3>
+
+			<p>
+				Start the launcher of choice and ensure you have the <strong
+					class="text-minecraft-gold">Station48</strong
+				> modpack selected. If you are using the custom launcher, it should
+				be selected by default. Then, click on the <strong
+					class="text-minecraft-gold">Play</strong
+				> button to launch the game.
+			</p>
+
+			<p>
+				Once in the game, click on <strong class="text-minecraft-green"
+					>Play Now!</strong
+				>
+				You will be taken directly into the server! From there, you can explore,
+				build, and interact with other players.
+			</p>
+
+			<CopyText text={STATION48_SERVER_IP} />
+
+			<hr class="my-4 border-t-2 border-minecraft-red" />
+
+			<h2
+				class="text-minecraft-purple-light text-3xl font-bold mb-4 quick-shadow flex gap-2 items-center"
+			>
+				<div class="bg-item-barrier"></div> Community Rules and Guidelines
+			</h2>
+
+			<p>
+				To ensure a positive experience for everyone, please follow our
+				community rules:
+			</p>
+
+			<ol>
+				<li>
+					<strong class="text-minecraft-gold"
+						>Be kind, constructive and respectful.</strong
+					>
+					<span class="text-minecraft-aqua"
+						>Wholesome vibes only.</span
+					>
+				</li>
+				<li>
+					<strong class="text-minecraft-gold"
+						>Harassment will not be tolerated.</strong
+					>
+					<span class="text-minecraft-aqua"
+						>All people have a right feel safe here. We enforce our
+						Code of Conduct and repeat offenders will be banned.</span
+					>
+				</li>
+				<li>
+					<strong class="text-minecraft-gold"
+						>Seriously, be kind!</strong
+					>
+					<span class="text-minecraft-aqua"
+						>Avoid posting things (yes, even that funny meme you
+						just found) that could be read as unkind to a certain
+						person or group. When in doubt, don't post it.</span
+					>
+				</li>
+				<li>
+					<strong class="text-minecraft-gold"
+						>No NSFW, obscene, or offensive content.</strong
+					>
+				</li>
+			</ol>
+
+			<hr class="my-4 border-t-2 border-minecraft-red" />
+
+			<h2
+				class="text-minecraft-green text-3xl font-bold mb-4 quick-shadow flex gap-2 items-center"
+			>
+				<div class="bg-item-sign"></div> Need Help?
+			</h2>
+			<p>
+				If you have any questions or need assistance, feel free to reach
+				out to our community on <a href={DISCORD_URL}>Discord</a> or in-game
+				chat.
+			</p>
+		</div>
 	</div>
-	
 </Layout>

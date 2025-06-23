@@ -1,0 +1,173 @@
+---
+import { STATION48_SERVER_IP, STATION48_SERVER_PORT } from "../consts";
+import { getServerStatus, getJavaIcon } from "../lib/getServerStatus";
+import { Image } from "astro:assets";
+
+const host = STATION48_SERVER_IP;
+
+const status = await getServerStatus({
+    host,
+    port: STATION48_SERVER_PORT,
+    options: {
+        query: true
+    }
+});
+
+const serverIcon = getJavaIcon(host);
+---
+
+<div class="bg-block-stonebrick_cracked bg-light-level-8 shadow-lg  h-block-2">
+    <div class="server-motd">
+        <div class="server-motd-icon">
+            <Image src={serverIcon} alt="Server Icon" height={64} width={64} loading="eager" />
+        </div>
+        <div class="server-motd-mid">
+
+            <div class="server-motd-address">
+                {status.online ? <div class="text-minecraft-green status-circle">⬤</div> : <div class="text-minecraft-red status-circle">⬤</div>}
+                <button
+                    id="server-address"
+                    class="tooltip-trigger js-tooltip-trigger"
+                    title="Click to copy"
+                    data-clipboard-content={host}
+                    onclick="copyText()"
+                >
+                    {host}
+                </button>
+            </div>
+
+            <div class="server-motd-message">
+                <pre id="motd" set:html={status?.motd?.html || "Server MOTD Unavailable"} />
+            </div>
+
+        </div>
+
+        <div class="server-motd-players">
+                {status.players.online && status.players.online > 0 ? ( <div class="text-minecraft-green">{status.players.online}</div> ) : ( <div class="text-minecraft-red">0</div> ) } <span>/</span> <div class="text-minecraft-yellow" >{status.players.max || 0}</div>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    function copyText() {
+        /* Select text area by id*/
+        var Text = document.getElementById("server-address");
+
+        /* Select the text inside text area. */
+        let address = Text?.getAttribute("data-clipboard-content");
+
+        const use = address;
+        /* Copy selected text into clipboard */
+        navigator.clipboard.writeText(use || "");
+    }
+</script>
+<link href="https://fonts.cdnfonts.com/css/minecraft-3" rel="stylesheet" />
+
+<style>
+    .server-motd {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        gap: 0.5rem;
+    }
+
+    .server-motd * {
+        overflow: hidden;
+    }
+
+    .server-motd-icon {
+        background-color: rgba(0, 0, 0, 0.651);
+        border-radius: 1.25rem;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.572);
+        position: relative;
+        transition: ease-in-out 0.2s;
+    }
+
+    @media screen and (max-width: 620px) {
+        .server-motd-icon {
+            display: none;
+        }
+        
+    }
+
+    .server-motd-mid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .server-motd-address {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: start;
+        gap: 0.5rem;
+        font-family: "Minecraft", sans-serif;
+        font-size: larger;
+        font-weight: 700;
+        color: #fffbda;
+    }
+
+    #motd {
+        background-color: rgba(20, 20, 20, 0.5);
+        color: rgb(189, 189, 189);
+        width: 100%;
+        height: 2.8rem;
+        padding: 0.25rem;
+        padding-left: 1rem;
+        padding-right: 2rem;
+        margin-top: 0.25rem;
+        font-size: 1rem;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.801);
+        font-family: "Minecraft", sans-serif;
+        user-select: none;
+        transition: ease-in-out 0.2s;
+        align-items: start;
+        justify-content: start;
+        display: flex;
+    }
+
+    .status-circle {
+        padding-top: 0.2rem;
+        position: relative;
+    }
+
+    #server-address {
+        background-color: transparent;
+        color: #fffbda;
+        border: none;
+        font-size: larger;
+        font-weight: 700;
+        font-family: "Minecraft", sans-serif;
+        text-shadow: 4px 4px 2px rgb(0, 0, 0);
+        cursor: pointer;
+        border-radius: 5px;
+        transition: ease-in-out 0.2s;
+        padding-top: 0.2rem
+    }
+
+    #server-address:hover {
+        text-shadow: 8px 8px 4px rgb(0, 0, 0);
+        scale: 1.1;
+        color: rgb(255, 255, 255)
+        transition: ease-in-out 0.2s;
+    }
+
+    #server-address:focus {
+        outline: none;
+    }
+
+    .server-motd-players {
+        display: flex;
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        gap: 0.2rem;
+        font-size: 1.2rem;
+    }
+</style>

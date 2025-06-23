@@ -1,4 +1,3 @@
-
 body.dark {
   color: white;
 }
@@ -15,4 +14,37 @@ a:active {
 
 a:active {
   text-decoration: underline;
+}
+
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.content {
+  z-index: 5;
+}
+
+.poke-icon {
+  position: absolute;
+  top: 25%;
+  right: 3rem;
+  width: 350px;
+  /* Adjust the size as needed */
+  height: auto;
+  /* Maintain aspect ratio */
+  z-index: -10;
+}
+
+@media screen and (max-width: 1000px) {
+  .poke-icon {
+    display: none;
+    /* Hide the image on smaller screens */
+  }
+}
+
+.quick-shadow {
+  text-shadow: 2px 2px 5px black;
 }

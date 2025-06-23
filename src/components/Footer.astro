@@ -1,24 +1,41 @@
 ---
-import { getServerIcon, getServerMOTD } from "astro-mcserverstatus:components/api";
+import { getServerMOTD } from "astro-mcserverstatus:components/api";
 import { Image } from "astro:assets";
-const logo = await getServerIcon();
+import logo from "../assets/favicon.png";
+import { DISCORD_URL, KINETIC_HOSTING_REFERRAL_URL } from "../consts";
 const motd = await getServerMOTD();
+
+interface Props {
+  eager?: boolean;
+}
+
+const { eager = false } = Astro.props;
 ---
 
 <footer
   class="flex flex-col sm:flex-row items-center justify-between py-4 px-6 h-block-5 sm:h-block-4 md:h-block-3 bg-block-bedrock bg-light-level-4"
 >
-  <header class="flex flex-col gap-3 w-full sm:w-[60%] my-auto">
-    <Image src={logo} alt="" class="h-full max-w-[30ch] m-[-14px]" inferSize loading="eager"/>
+  <header
+    class="flex align-center items-center gap-4 w-full sm:w-[60%] my-auto"
+  >
+    <Image
+      src={logo}
+      alt="Station48 Logo"
+      class="h-full max-w-[30ch] m-[-14px]"
+      loading={eager ? "eager" : "lazy"}
+      width={64}
+      height={64}
+    />
     <pre set:html={motd} />
   </header>
   <nav
-    class="flex sm:flex-col items-center sm:items-end justify-center gap-2 sm:gap-1 text-link"
+    class="flex flex-col items-center sm:items-end justify-center gap-2 sm:gap-1 text-link w-full"
   >
-    <a href="/get-started" class="link"
-      >Download our Modpack</a
-    >
-    <a href="https://astro.build" class="link">Website Built with Astro</a>
-    <a href="https://discord.gg/Hq5j3WhX9b" class="link">Our Discord</a>
+    <a href="/rss.xml" class="link">RSS Feed</a>
+    <a href={KINETIC_HOSTING_REFERRAL_URL} class="link">
+      Hosting by Kinetic Hosting ↗
+    </a>
+    <a href="https://astro.build" class="link">Website Built with Astro ↗</a>
+    <a href={DISCORD_URL} class="link">Our Discord ↗</a>
   </nav>
 </footer>

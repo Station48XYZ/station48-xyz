@@ -1,40 +1,36 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import type { LayoutProps } from "./layoutProps";
+import { Image } from "astro:assets";
+import magikarp from "../assets/magikarp.webp";
+import spawn from "../assets/spawn.png";
 
-import "../styles/reset.css";
-import "../styles/minecraft.css";
-import { getServerIcon } from "astro-mcserverstatus:components/api";
+interface Props extends LayoutProps {}
 
-type Props = {
-	navbar?: boolean;
-	footer?: boolean;
-};
-
-const { navbar = true, footer = true } = Astro.props;
-
-const favicon = await getServerIcon();
-
-// const {} = config;
+const { navbar = true, footer = true, subtitle, description } = Astro.props;
 ---
 
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A Minecraft Server for Developers and Friends!">
-    <meta property="og:title" content="Station 48">
-    <meta property="og:description" content="A Minecraft Server for Developers and Friends!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://station48.xyz">
-    <meta property="og:image" content="https://station48.xyz/station48-og.png">
-    <link rel="icon" href={favicon}> 
-    <title>Station 48 | A Minecraft Server for Developers and Friends!</title>
+    <Head {subtitle} {description} />
   </head>
-  <body class="dark flex flex-col min-h-screen p-0 m-0 bg-block-stone bg-light-level-4 scrollbar font-minecraft">
+  <body
+    class="dark flex flex-col min-h-screen p-0 m-0 bg-light-level-8 scrollbar font-minecraft"
+    style={`background-image: url(${spawn.src});`}
+  >
     {navbar && <Navbar />}
-    <div class="grow mx-auto p-4 minecraft prose">
-      <slot />
+    <div class="h-full w-full justify-center grow minecraft blog">
+      <div class="content h-full grow">
+        <slot />
+      </div>
+      <Image
+        src={magikarp}
+        alt="Pokemon: Magikarp"
+        class="poke-icon"
+        loading="eager"
+      />
     </div>
     {footer && <Footer />}
   </body>

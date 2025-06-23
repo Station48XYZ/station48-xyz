@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/AstroCraft.astro";
+import { getEntry } from "astro:content";
+
+const slug = Astro.params.slug;
+
+if (!slug) {
+	return Astro.redirect("/404");
+}
+
+const post = await getEntry("news", slug);
+
+if (!post || post.data.draft) {
+	return Astro.redirect("/404");
+}
+
+const { Content } = await post.render();
+---
+
+<Layout subtitle={post.data.title} description={post.data.description}>
+	<div
+		class="flex flex-col items-center justify-center gap-20 py-8 h-full max-w-[1200px]"
+	>
+		<div
+			class="flex flex-col items-center bg-block-planks_oak bg-light-level-8 p-6 rounded-lg shadow-md mb-2"
+		>
+			<h1
+				class="text-minecraft-gold text-4xl font-minecraft-evenings mb-2 quick-shadow"
+			>
+				{post.data.title}
+			</h1>
+			<div class="text-minecraft-aqua mb-4 quick-shadow">
+				Posted – {new Date(post.data.date).toLocaleDateString()}
+			</div>
+		</div>
+
+		<div
+			class="minecraft mb-8 text-xl bg-block-stone bg-light-level-6 p-8 rounded-lg shadow-md minecraft-prose h-full"
+		>
+			<Content />
+		</div>
+	</div>
+</Layout>
