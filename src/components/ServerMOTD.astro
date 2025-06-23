@@ -37,7 +37,7 @@ const serverIcon = getJavaIcon(host);
             </div>
 
             <div class="server-motd-message">
-                <pre id="motd" set:html={status.motd.html} />
+                <pre id="motd" set:html={status?.motd?.html || "Server MOTD Unavailable"} />
             </div>
 
         </div>
