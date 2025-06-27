@@ -45,10 +45,10 @@ export const NAV = [
         text: 'News',
         href: '/news/1',
     },
-    {
-        text: 'Live Map',
-        href: '/map'
-    },
+    // {
+    //     text: 'Live Map',
+    //     href: '/map'
+    // },
     {
         text: 'Web Shop ↗',
         href: 'https://station48-cobblemon.tebex.io/',
