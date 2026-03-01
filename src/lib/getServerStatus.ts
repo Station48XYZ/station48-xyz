@@ -95,6 +95,7 @@ export async function getServerStatus(opts: getJavaStatusOptions): Promise<JavaS
         result = await superagent.get(`${url}/status/java/${ip}:${p}?query=${query ?? true}`);
     } catch (error) {
         console.error("Error fetching server status:", error);
+        return {} as JavaStatusResponse;
     }
 
     if (result.statusCode !== 200) {
