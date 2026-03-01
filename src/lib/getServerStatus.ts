@@ -84,15 +84,21 @@ export type StatusResponse = z.infer<typeof StatusResponseSchema>;
 export type getJavaStatusOptions = z.infer<typeof getJavaStatusOptionsSchema>;
 
 export async function getServerStatus(opts: getJavaStatusOptions): Promise<JavaStatusResponse> {
-    const url = opts.apiUrl?opts.apiUrl:'https://api.mcstatus.io/v2';
+    const url = opts.apiUrl ? opts.apiUrl : 'https://api.mcstatus.io/v2';
     const ip = opts.host;
-    const p = opts.port?opts.port:25565;
-    const query = opts.options?.query?opts.options.query:true;
+    const p = opts.port ? opts.port : 25565;
+    const query = opts.options?.query ? opts.options.query : true;
 
-    const result = await superagent.get(`${url}/status/java/${ip}:${p}?query=${query ?? true}`);
+    let result: superagent.Response;
+
+    try {
+        result = await superagent.get(`${url}/status/java/${ip}:${p}?query=${query ?? true}`);
+    } catch (error) {
+        console.error("Error fetching server status:", error);
+    }
 
     if (result.statusCode !== 200) {
-        throw new Error(result.body);
+        return {} as JavaStatusResponse;
     }
 
     return result.body as JavaStatusResponse;
@@ -114,12 +120,12 @@ export async function parseServerMOTD(serverStatus: JavaStatusResponse): Promise
     return {} as JavaStatusResponse["motd"];
 }
 
-export const getJavaIcon = ( host: string, port = 25565 ): string => {
+export const getJavaIcon = (host: string, port = 25565): string => {
     const result = `https://api.mcstatus.io/v2/icon/${host}:${port}`;
     return result as string;
 };
 
-export const trimUUID = ( uuid: string ): string => {
+export const trimUUID = (uuid: string): string => {
     if (uuid.includes('-')) {
         const newUUID = uuid.replace(/-/g, '');
         return newUUID;
@@ -127,12 +133,12 @@ export const trimUUID = ( uuid: string ): string => {
     return uuid;
 };
 
-export const getPlayer = ( opts: PlayerOptions ): string => {
-    if (opts.type === "face" || opts.type === "head"){
+export const getPlayer = (opts: PlayerOptions): string => {
+    if (opts.type === "face" || opts.type === "head") {
         const result = `https://api.mineatar.io/${opts.type}/${trimUUID(opts.uuid)}?scale=16`;
         return result;
     }
-    if (opts.type === "body"){
+    if (opts.type === "body") {
         const result = `https://api.mineatar.io/body/full/${trimUUID(opts.uuid)}?scale=16`;
         return result;
     }
