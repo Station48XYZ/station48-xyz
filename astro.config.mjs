@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import minecraftStyles from 'astrocraft/unocss';
-import mcServerStatus from '@matthiesenxyz/astro-mcserverstatus';
 import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 import transformerDirectives from '@unocss/transformer-directives'
@@ -18,16 +17,9 @@ export default defineConfig({
     ]
   },
   integrations: [
-    mdx(), 
+    mdx(),
     minecraftStyles({
       transformers: [transformerDirectives()]
-    }), 
-    mcServerStatus({
-        serverAddress: "play.station48.xyz",
-        javaOptions: {
-            query: true,
-        },
-        verbose: true,
-    })
+    }),
   ]
 });

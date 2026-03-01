@@ -13,7 +13,6 @@
 		"@astrojs/mdx": "3.0.1",
 		"@astrojs/node": "8.2.5",
 		"@astrojs/rss": "^4.0.12",
-		"@matthiesenxyz/astro-mcserverstatus": "0.1.0",
 		"@types/superagent": "^8.1.9",
 		"@unocss/transformer-directives": "^0.60.3",
 		"astro": "4.9.1",

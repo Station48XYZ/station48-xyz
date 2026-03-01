@@ -1,15 +1,24 @@
 ---
-import { getServerMOTD } from "astro-mcserverstatus:components/api";
 import { Image } from "astro:assets";
 import logo from "../assets/favicon.png";
-import { DISCORD_URL, KINETIC_HOSTING_REFERRAL_URL } from "../consts";
-const motd = await getServerMOTD();
+import { DISCORD_URL, KINETIC_HOSTING_REFERRAL_URL, STATION48_SERVER_IP, STATION48_SERVER_PORT } from "../consts";
+import { getServerStatus } from "../lib/getServerStatus";
 
 interface Props {
   eager?: boolean;
 }
 
 const { eager = false } = Astro.props;
+
+const host = STATION48_SERVER_IP;
+
+const status = await getServerStatus({
+    host,
+    port: STATION48_SERVER_PORT,
+    options: {
+        query: true
+    }
+});
 ---
 
 <footer
@@ -26,7 +35,7 @@ const { eager = false } = Astro.props;
       width={64}
       height={64}
     />
-    <pre set:html={motd} />
+    <pre set:html={status?.motd?.html || "Server MOTD Unavailable"} />
   </header>
   <nav
     class="flex flex-col items-center sm:items-end justify-center gap-2 sm:gap-1 text-link w-full"
